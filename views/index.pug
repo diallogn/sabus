@@ -2,13 +2,15 @@ extends layout
 
 block content
   .container
+    h5(class="mt-4")=title
     #products 
       each product in products 
         div(class="card mt-4")
           .card-img
-            img(src=product.image_url, alt="Produits-"+product.reference, width="auto", height="145px")
-          h5(class="card-title") #{product.name}
-          a(href=product.url class="card-detail") Détails 
+            img(src=product.image_url, title="Produits-"+product.reference, height="145px", width="145px")
+          .card-title
+            h5(class="card-title") #{product.name}
+          a(href=product.url+'/details' class="card-detail") Détails 
     div(class="container mt-b mt-4 d-flex justify-content-center")
       div(class="pagination d-flex")
         a(href="#" class="page-link") 1 

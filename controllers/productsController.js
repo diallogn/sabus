@@ -1,10 +1,10 @@
 var Electro = require('../models/electro');
 
 exports.index = function(req, res, next) {
-    Electro.find({})
+    Electro.find()
         .exec(function(err, data){
             if (err) {next(err)}
-            res.render('index', {title: "Sabus", products: data});
+            res.render('index', {title: "Electroménager", products: data});
     });
 }
 
@@ -17,7 +17,7 @@ exports.prd_detail = function(req, res, next) {
                 .exec(function(err, prd){
                     if(err) {return next(err);}
 
-                    res.render('detail', {title: 'Electromenager', product: data, thumbs: prd})
+                    res.render('detail', {title: 'Electroménager', product: data, thumbs: prd})
                 });
         })
 }

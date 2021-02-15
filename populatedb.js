@@ -36,13 +36,7 @@ function createProduct(name, reference, family, description, image_url, cb) {
 function prdCreate(cb) {
     async.series([
         function(callback){
-            createProduct('Neo Inverter','WF10-M15','Front Loading', '','/images/products/no-prd.png', callback)
-        },
-        function(callback){
-            createProduct('Congélateur Horizontal WL13-C40','WL13-C40','congelateur horizontal', '','/images/products/congelateur-horizontal.png', callback)
-        },
-        function(callback){
-            createProduct('Démodulateur P200HD','P200HD','Démodulateurs', "Petit facile a installer, le P200HD nous permet d'avoir un conetnu en Full HD , avec une mémoire de chaines qui peut aller jusqu'à 5000 Chaines.","/images/products/demodulateur.jpg", callback)
+            createProduct('Radiateur CBH-U3813','CBH-U3813','Radiateur', '','/images/products/radiateur.jpg', callback)
         }
     ], 
     cb

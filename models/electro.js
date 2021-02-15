@@ -13,7 +13,7 @@ var ElectroSchema = new Schema({
 ElectroSchema
 .virtual('url')
 .get(function(){
-    return '/nos-produits/'+this._id
+    return '/nos-produits/electromenager/'+this._id
 })
 
 module.exports = mongoose.model('Electro', ElectroSchema);
