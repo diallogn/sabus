@@ -14,11 +14,24 @@ a:hover {
   text-decoration: none;
 }
 
-#page {
-  height: calc(100vh - 50px);
+#products {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
 }
-#page .logo-img {
+
+.card {
+  height: 325px;
+  width: 208px;
+  padding: 8px;
+  margin: 5px;
+  position: relative;
+  border: 1px solid #ccc;
+}
+
+.card-detail {
+  position: absolute;
+  bottom: 35px;
+  right: 35px;
+  font-size: 14px;
+  color: black;
 }

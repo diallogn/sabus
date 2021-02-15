@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
+var products_controller = require('../controllers/productsController');
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: "sabu's shop" });
-});
+router.get('/', products_controller.index);
 
 module.exports = router;

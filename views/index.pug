@@ -1,5 +1,9 @@
 extends layout
 
 block content
-  #page
-    img(src="https://adrhtpdlkq.cloudimg.io/v7/sample.li/paris.jpg?height=400&", alt="Logo" class="logo-img")
+  .container
+    #products 
+      each product in products 
+        .card 
+          h5(class="card-title") #{product.name}
+          a(href="#" class="card-detail") Détails 
