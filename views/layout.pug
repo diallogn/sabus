@@ -2,7 +2,25 @@ doctype html
 html
   head
     title= title
+    meta(charset="UTF-8")
     link(rel="stylesheet", href="/vendor/bootstrap/css/bootstrap.min.css")
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    header(class="navbar navbar-light")
+      div(class="container")
+        a(href="/" class="navbar-brand d-flex align-items-center")
+          img(src="/images/logo/sabu's 2.png", alt="" height="50px" class="mr-2")
+          h3(class="m-0") Sabu's
+        
+        ul(class="navbar-nav flex-direction-row")
+          li(class="nav-item mr-4")
+            a(href="#" class="nav-link") Electromenager 
+          li(class="nav-item mr-4")
+            a(href="#" class="nav-link") Phone
+          li(class="nav-item mr-4")
+            a(href="#" class="nav-link") TV
+
     block content
+    footer.mt-4
+      .container
+        p &copy; 2021 Sabu's Shop, Inc.

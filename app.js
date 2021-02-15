@@ -6,12 +6,13 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
+var productsRouter = require('./routes/products');
 var usersRouter = require('./routes/users');
 
 var app = express();
 // Database
-var mongoDB = "mongodb+srv://celafinde:69305565@cluster0.wmifd.mongodb.net/sabus?retryWrites=true&w=majority";
-mongoose.connect(mongoDB, {useNewUrlParser: true, useNewUrlParser: true});
+var mongoDB = "mongodb://localhost/sabus";
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error: '));
 
@@ -26,6 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/nos-produits', productsRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

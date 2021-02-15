@@ -10,4 +10,10 @@ var ElectroSchema = new Schema({
     date: {type: Date, default: Date.now}
 });
 
+ElectroSchema
+.virtual('url')
+.get(function(){
+    return '/nos-produits/'+this._id
+})
+
 module.exports = mongoose.model('Electro', ElectroSchema);

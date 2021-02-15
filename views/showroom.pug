@@ -1,0 +1,22 @@
+extends layout 
+block content 
+    div(class="container mt-4 showroom")
+        .row
+            .col-sm-6
+                h4= product.name 
+                p 
+                    strong Reference : #{product.reference}
+                p 
+                    strong Famille: #{product.family}
+
+            .col-sm-6
+                h4 Contactez-nous 
+                p 
+                    strong Ville :
+                    | Mamou
+                p 
+                    strong Phone :
+                    | +224 655 55 55 55
+                p 
+                    strong Email :
+                    | sabus@contact.com

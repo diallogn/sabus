@@ -3,7 +3,8 @@ var async = require('async');
 var Electro = require('./models/electro');
 
 // Database connect
-var mongoDB = 'mongodb+srv://celafinde:69305565@cluster0.wmifd.mongodb.net/sabus?retryWrites=true&w=majority';
+var mongoUri = 'mongodb+srv://celafinde:69305565@cluster0.wmifd.mongodb.net/sabus?retryWrites=true&w=majority';
+var mongoDB = 'mongodb://localhost/sabus';
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology:true});
 mongoose.Promise =global.Promise;
 let db = mongoose.connection;
@@ -35,10 +36,13 @@ function createProduct(name, reference, family, description, image_url, cb) {
 function prdCreate(cb) {
     async.series([
         function(callback){
-            createProduct('Neo Inverter','WF10-M15','Front Loading', '','https://adrhtpdlkq.cloudimg.io/v7/sample.li/paris.jpg?height=400&', callback)
+            createProduct('Neo Inverter','WF10-M15','Front Loading', '','/images/products/no-prd.png', callback)
         },
         function(callback){
-            createProduct('Machine à laver WL13-C40','WL13-C40',' Semi Automatique', '','https://adrhtpdlkq.cloudimg.io/v7/sample.li/paris.jpg?height=400&', callback)
+            createProduct('Congélateur Horizontal WL13-C40','WL13-C40','congelateur horizontal', '','/images/products/congelateur-horizontal.png', callback)
+        },
+        function(callback){
+            createProduct('Démodulateur P200HD','P200HD','Démodulateurs', "Petit facile a installer, le P200HD nous permet d'avoir un conetnu en Full HD , avec une mémoire de chaines qui peut aller jusqu'à 5000 Chaines.","/images/products/demodulateur.jpg", callback)
         }
     ], 
     cb
