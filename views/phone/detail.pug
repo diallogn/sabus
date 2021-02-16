@@ -1,4 +1,5 @@
-extends layout 
+extends ../layout 
+
 block content 
     .container 
         div(class="row mt-4")
@@ -11,17 +12,17 @@ block content
                 p 
                     span famille : #{product.family} 
                 p=product.description
-                a(href=product.url+'/showroom' class="btn btn-primary") Acheter
+                a(href=product.url+'/showroom' class="btn btn-primary") Où acheter
         hr
         div(class="row mt-4 mb-4")
             h5.prd-title LES PRODUITS DE MÊME FAMILLE
             div(class="col-sm-12 d-flex position-relative")
                 each prd in thumbs
                     div(class="thumb")
-                        a(href=prd.url) 
+                        a(href=prd.url+'/details') 
                             div(class="thumb-img" style=`background:url('${prd.image_url}')no-repeat;background-size:100%;background-position:center`)
-                        a(href=prd.url)
+                        a(href=prd.url+'/details')
                             div(class="thumb-name")
                                 p=prd.name
-                a(href="/nos-produits/electromenager" class="prd-plus")  Voir Plus
+                a(href="/nos-produits/telephone" class="prd-plus")  Voir Plus
 

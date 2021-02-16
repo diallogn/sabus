@@ -6,23 +6,21 @@ html
     link(rel="stylesheet", href="/vendor/bootstrap/css/bootstrap.min.css")
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    header(class="navbar navbar-light")
+    header(class="navbar navbar-dark" style="background:red")
       div(class="container")
-        a(href="/" class="navbar-brand d-flex align-items-center")
-          img(src="/images/logo/sabu's 2.png", alt="" height="50px" class="mr-2")
+        a(href="/" class="navbar-brand d-flex align-items-center logo")
           h3(class="m-0") Sabu's
         
         ul(class="navbar-nav flex-direction-row")
           li(class="nav-item mr-4")
-            a(href="/nos-produits/electromenager" class="nav-link") Electromenager 
+            a(href="/nos-produits/electromenager" class="nav-link") Electroménager 
           li(class="nav-item mr-4")
-            a(href="#" class="nav-link") Phone
-          li(class="nav-item mr-4")
-            a(href="#" class="nav-link") TV
+            a(href="/nos-produits/telephone" class="nav-link") Téléphone
 
     block content
     footer.mt-4
       .container
-        p &copy; 2021 Sabu's Shop, Inc.
-        span Designed by 
-          a(href="#") Abdoulaye Diallo 
+        p 
+          strong &copy; 2021 Sabu's Guinea.
+        span Created by 
+          a(href="#") Stardev Agency

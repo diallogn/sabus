@@ -1,31 +1,32 @@
-var Electro = require('../models/electro');
+var Phone = require('../models/phone');
 
 exports.index = function(req, res, next) {
-    Electro.find()
+    Phone.find()
         .exec(function(err, data){
             if (err) {next(err)}
-            res.render('index', {title: "Electroménager", products: data});
+            res.render('phone/index', {title: "Téléphone", products: data});
     });
 }
 
 exports.prd_detail = function(req, res, next) {
-    Electro.findById(req.params.id)
+    Phone.findById(req.params.id)
         .exec(function(err, data){
             if(err){return next(err);}
 
-            Electro.find({family: data.family})
+            Phone.find({family: data.family})
                 .exec(function(err, prd){
                     if(err) {return next(err);}
 
-                    res.render('detail', {title: 'Electroménager', product: data, thumbs: prd})
+                    res.render('phone/detail', {title: 'Téléphone', product: data, thumbs: prd})
                 });
         })
 }
 
 exports.prd_acheter = function(req, res, next) {
-    Electro.findById(req.params.id)
+    Phone.findById(req.params.id)
         .exec(function(err, data) {
             if(err) {return next(err);}
-            res.render('showroom', {title: 'Showroom', product: data})
+            res.render('phone/showroom', {title: 'Showroom', product: data})
         })
 }
+

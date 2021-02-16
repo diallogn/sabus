@@ -1,0 +1,29 @@
+extends ../layout 
+
+block content 
+    .container 
+        div(class="row mt-4")
+            div(class="col-sm-6 d-flex justify-content-center")
+                img(src=product.image_url, alt="Produit" height="300px")
+            div(class="col-sm-6 d-flex justify-content-center align-items-center")
+                div(class="prd-block")
+                    h6 #{product.name}
+                    p
+                        span reference : #{product.reference}
+                    p 
+                        span famille : #{product.family} 
+                    p=product.description
+                    a(href=product.url+'/showroom' class="btn btn-primary") Où acheter
+        hr
+        div(class="row mt-4 mb-4")
+            h5.prd-title LES PRODUITS DE MÊME FAMILLE
+            div(class="col-sm-12 d-flex position-relative flex-wrap-wrap")
+                each prd in thumbs
+                    div(class="thumb")
+                        a(href=prd.url+'/details') 
+                            div(class="thumb-img" style=`background:url('${prd.image_url}')no-repeat;background-size:100%;background-position:center`)
+                        a(href=prd.url+'/details')
+                            div(class="thumb-name")
+                                p=prd.name
+                a(href="/nos-produits/electromenager" class="prd-plus")  Voir Plus
+

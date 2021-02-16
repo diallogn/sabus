@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var async = require('async');
 var Electro = require('./models/electro');
+var Phone = require('./models/phone');
 
 // Database connect
 var mongoUri = 'mongodb+srv://celafinde:69305565@cluster0.wmifd.mongodb.net/sabus?retryWrites=true&w=majority';
@@ -21,7 +22,7 @@ function createProduct(name, reference, family, description, image_url, cb) {
         description: description,
         image_url: image_url
     }
-    let product = new Electro(productdetail);
+    let product = new Phone(productdetail);
     product.save(function(err, result) {
         if(err){
             cb(err, null)
@@ -36,8 +37,20 @@ function createProduct(name, reference, family, description, image_url, cb) {
 function prdCreate(cb) {
     async.series([
         function(callback){
-            createProduct('Radiateur CBH-U3813','CBH-U3813','Radiateur', '','/images/products/radiateur.jpg', callback)
-        }
+            createProduct('Samsung SM-J200h/DS','SM-J200h/DS','android', '','/images/products/phone/allure.jpg', callback)
+        },
+        function(callback){
+            createProduct('Techno Mobile WL13-C40','WL13-C40','android', '','/images/products/phone/allure.jpg', callback)
+        },
+        function(callback){
+            createProduct('Iphone X',' FG30-S18','ios', '','/images/products/phone/allure.jpg', callback)
+        },
+        function(callback){
+            createProduct('Huawei P200HD','P200HD','android', "",'/images/products/phone/allure.jpg', callback)
+        },
+        function(callback){
+            createProduct('Radiateur CBH-U3813','CBH-U3813','ios', '','/images/products/phone/allure.jpg', callback)
+        },
     ], 
     cb
     );
