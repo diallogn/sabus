@@ -1,13 +1,20 @@
 extends ../layout
 
 block content
+  div(class="banner-small d-flex align-items-center")
+      .container
+          .row 
+              div(class="col-sm-6")
+                  h5 
+                      span.sabus Sabu's Shop 
+                  p Le magasin d'électronique le plus proche de vous. 
   .container
     h5(class="mt-4")=title
     #products 
       each product in products 
         div(class="card mt-4")
           .card-img
-            img(src=product.image_url, title="Produits-"+product.reference, height="87px", width="159px")
+            img(src=product.image_url, title="Produits-"+product.reference, height="159px", width="159px")
           .card-title
             h5(class="card-title") #{product.name}
           a(href=product.url+'/details' class="card-detail") Détails 
