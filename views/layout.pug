@@ -4,13 +4,21 @@ html
     title= title
     meta(charset="UTF-8")
     link(rel="stylesheet", href="/vendor/bootstrap/css/bootstrap.min.css")
+    link(rel="stylesheet", href="/vendor/icofont/icofont.min.css")
+    link(rel="stylesheet", href="/vendor/boxicons/css/boxicons.min.css")
+    link(rel="stylesheet", href="/vendor/remixicon/remixicon.css")
+    link(rel="stylesheet", href="/vendor/animate.css/animate.min.css")
+    link(rel="stylesheet", href="/vendor/owl.carousel/assets/owl.carousel.min.css")
+    link(rel="stylesheet", href="/vendor/owl.carousel/assets/owl.carousel.min.css")
+    link(rel="stylesheet", href="/vendor/aos/aos.css")
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    header(class="navbar navbar-dark" style="background:red")
+    header(class="navbar navbar-light fixed-top" style="background: white;")
       div(class="container")
         a(href="/" class="navbar-brand d-flex align-items-center logo")
-          h3(class="m-0") Sabu's
-        
+          img(src="/images/logo/sabu's 2.png", alt="Logo" height="50" class="mr-2")
+          h3(class="m-0") Sabus
+
         ul(class="navbar-nav flex-direction-row")
           li(class="nav-item mr-4")
             a(href="/nos-produits/electromenager" class="nav-link") Electroménager 
@@ -19,8 +27,26 @@ html
 
     block content
     footer.mt-4
-      .container
-        p 
-          strong &copy; 2021 Sabu's Guinea.
-        span Created by 
-          a(href="#") Stardev Agency
+      div(class="container d-md-flex py-4")
+        div(class="text-center text-md-left mr-auto")
+          p
+            strong &copy; 2021 Sabu's Shop.
+            | Tous droit reservé
+          span Created by 
+            a(href="#") Celafinde Agency
+        div(class="social-links text-center text-md-right")
+          a(href="#") 
+            i(class="bx bxl-twitter")
+          a(href="#") 
+            i(class="bx bxl-facebook")
+          a(href="#") 
+            i(class="bx bxl-instagram")
+          a(href="#") 
+            i(class="bx bxl-linkedin")
+
+    script(src="/vendor/jquery/jquery.min.js") 
+    script(src="/vendor/waypoints/jquery.waypoints.min.js") 
+    script(src="/vendor/bootstrap/js/bootstrap.bundle.min.js")
+    script(src="/vendor/popper/popper.min.js")  
+    script(src="/vendor/aos/aos.js") 
+    script(src="javascripts/app.js") 

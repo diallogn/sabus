@@ -1,7 +1,11 @@
-/* -------------------------------  */
-/*        General                   */
-/* -------------------------------  */
+/**
+* Website Name: Sabus - v1.0.0
+* Author: Abdoulaye Diallo
+*/
 
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
@@ -17,60 +21,70 @@ a {
 a:hover {
   text-decoration: none;
 }
+.bg-color {
+  color: white;
+  background: #FF0000;
+}
 
-/* -------------------------------  */
-/*        Bootstrap                 */
-/* -------------------------------  */
+/*--------------------------------------------------------------
+# Bootstrap  
+--------------------------------------------------------------*/
 .nav-link {
   font-size: 16px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, .9) !important;
-}
-.nav-link:hover{
-  color: white!important;
 }
 
-/* -------------------------------  */
-/*        Header                    */
-/* -------------------------------  */
-
+/*--------------------------------------------------------------
+# Header  
+--------------------------------------------------------------*/
+header {
+  box-shadow: 0px 0px 7px #aaa;
+}
 .navbar-nav {
   flex-direction: row;
 }
-header {
-  box-shadow: 0px 0px 30px rgb(230, 230, 230) ;
-}
+
 .logo h3 {
   font-family: serif;
   font-weight: 900;
 }
-/* -------------------------------  */
-/*        Bootstrap                 */
-/* -------------------------------  */
 
+/*--------------------------------------------------------------
+# Banner 
+--------------------------------------------------------------*/
 .banner {
-  height: 60vh;
-  border-bottom: 1px solid rgb(230, 230, 230);
+  height: 80vh;
+  color: white;
+  background: linear-gradient(rgba(96, 92, 91, 0.3) 50%, rgba(96, 92, 91, 0.3) 0% ), url('/images/banner.jpg') no-repeat;
+  background-position: center;
+  background-size: cover;
   transition: all .3s;
 }
 
 .banner-small {
+  margin-top: 70px;
   height: 30vh;
   border-bottom: 1px solid rgb(230, 230, 230);
   transition: all .3s;
+  background: red;
+  color: white;
 }
-.sabus {
-  font-size: 45px;
-  font-weight: bold;
-  font-family: serif;
+.banner h1 {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.banner h2 {
+  color: #eee;
+  font-size: 24px;
 }
 .banner p, .banner-small p {
-  font-weight: lighter;
+  font-weight: 300;
   font-size: 18px;
 }
-/* -------------------------------  */
-/*        Products                   */
-/* -------------------------------  */
+
+/*--------------------------------------------------------------
+# Cards 
+--------------------------------------------------------------*/
 #products {
   display: flex;
   flex-wrap: wrap;
@@ -105,7 +119,7 @@ header {
   bottom: 25px;
   right: 25px;
   font-size: 14px;
-  color: #FF0000;
+  color: rgb(87, 87, 87);
 }
 
 .card-detail:hover {
@@ -114,9 +128,16 @@ header {
 .btn {
   font-size: 14px;
 }
-/* -------------------------------  */
-/*        Thumbs                   */
-/* -------------------------------  */
+
+/*--------------------------------------------------------------
+# Thumbs  
+--------------------------------------------------------------*/
+.thumbs{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .thumb {
   width: 170px;
   padding: 10px;
@@ -144,7 +165,7 @@ header {
 }
 .prd-plus {
   position: absolute;
-  right: 0px;
+  right: 20px;
   bottom: 20px;
 }
 
@@ -153,17 +174,14 @@ header {
   font-weight: 700;
 }
 
-.showroom {
-
-}
-/* -------------------------------  */
-/*        Footer                    */
-/* -------------------------------  */
-
+/*--------------------------------------------------------------
+# Footer  
+--------------------------------------------------------------*/
 footer {
+  padding: 20p 0x;
+  color: white;
   border-top: 1px solid rgb(204, 204, 204);
-  padding: 30px 0 ;
-
+  background-color: black;
 }
 
 footer p {
@@ -171,5 +189,26 @@ footer p {
 }
 
 footer span {
-  font-size: 12px;
+  font-size: 13px;
+}
+.social-links{
+  margin-top: 15px;
+}
+
+.social-links a {
+  display: inline-block;
+  height: 36px;
+  width: 36px;
+  padding: 8px 0;
+  border-radius: 4px;
+  margin-right: 4px;
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  text-align: center;
+  line-height: 1;
+  transition: 0.3s;
+}
+.social-links a:hover {
+  background: #FF0000;
 }
