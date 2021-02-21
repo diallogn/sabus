@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var { DateTime }= require('luxon');
 var Schema = mongoose.Schema;
 
 var ElectroSchema = new Schema({
@@ -14,6 +15,13 @@ ElectroSchema
 .virtual('url')
 .get(function(){
     return '/nos-produits/electromenager/'+this._id
-})
+});
+
+
+ElectroSchema
+.virtual('created_at')
+.get(function(){
+    return DateTime.fromJSDate(this.date).toFormat('dd / LLL / yyyy')
+});
 
 module.exports = mongoose.model('Electro', ElectroSchema);

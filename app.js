@@ -9,10 +9,11 @@ var indexRouter = require('./routes/index');
 var electromenagerRouter = require('./routes/ectromenager');
 var phoneRouter = require('./routes/phone');
 var usersRouter = require('./routes/users');
+var adminRouter = require('./routes/admin/index');
 
 var app = express();
 // Database
-var mongoDB = "mongodb://localhost/sabus";
+var mongoDB = "mongodb://localhost/sabu";
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error: '));
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/nos-produits/electromenager', electromenagerRouter);
 app.use('/nos-produits/telephone', phoneRouter);
+app.use('/admin', adminRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

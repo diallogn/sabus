@@ -1,0 +1,43 @@
+extends admin-layout
+block content 
+    .container-fluid
+        h4.mt-3=title
+        form(action="/admin/ajouter-un-produit" method="post" enctype="multipart/") 
+            .row
+                .col-sm-6
+                    .form-group 
+                        label(for="name_prd") Name: 
+                        input(type="text" class="form-control" name="name" id="name_prd" ) 
+                .col-sm-6
+                    .form-group 
+                        label(for="price_prd") Price: 
+                        input(type="text" class="form-control"  name="price" id="price_prd")
+            .row 
+                .col-sm-6  
+                    .form-group 
+                        label(for="ean_13_prd") EAN-13 code: 
+                        input(type="text" class="form-control"  name="ean_13" id="ean_13_prd") 
+                .col-sm-6  
+                    .form-group
+                        label(for="category_prd") Categories: 
+                        select(name="category_prd" id="category_prd" class="form-control") 
+                            each category in categories 
+                                option #{category.name} 
+            .row 
+                .col-sm-6
+                    .form-group 
+                        label(for="file_prd") File image: 
+                        input(type="file" class="form-control-file"  name="file_prd" id="file_prd") 
+
+                .col-sm-6
+                    .form-group 
+                        label(for="tags_prd") Tags: 
+                        input(type="text" class="form-control"  name="tags" id="tags_prd") 
+            .form-group 
+                label(for="desc_prd") Description:  
+                textarea( name="desc_prd" id="desc_prd", class="form-control" cols="20", rows="10") 
+
+            label(for="published_prd") Published: 
+            input(type="checkbox" class="m-2"  name="published_prd" id="published_prd") 
+            .pt-3.pb-3
+                input(type="submit" value="save changes" class="btn btn-primary")

@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset="UTF-8")
+    link(rel="stylesheet", href="/vendor/bootstrap/css/bootstrap.min.css")
+    link(rel="stylesheet", href="/vendor/icofont/icofont.min.css")
+    link(rel="stylesheet", href="/vendor/boxicons/css/boxicons.min.css")
+    link(rel="stylesheet", href="/vendor/remixicon/remixicon.css")
+    link(rel="stylesheet", href="/vendor/animate.css/animate.min.css")
+    link(rel="stylesheet", href="/vendor/owl.carousel/assets/owl.carousel.min.css")
+    link(rel="stylesheet", href="/vendor/owl.carousel/assets/owl.carousel.min.css")
+    link(rel="stylesheet", href="/vendor/aos/aos.css")
+    link(rel="stylesheet", href="/stylesheets/admin.css")
+  body
+    
+  #aria
+    #aside.fixed-top
+      .topbar.sabus-bg.pl-3
+        h5.ml-2 Sabus
+      ul.list-unstyled.nav-pills
+        li.p-2
+          i(class="icofont icofont-home mr-2 ml-3")
+          a(href="/") Home
+        li.p-2
+          i(class="icofont icofont-price mr-2 ml-3")
+          a(href="/admin")  Products
+        li.p-2
+          i(class="icofont icofont-shopping-cart mr-2 ml-3")
+          a(href="#") Categories
+        li.p-2
+          i(class="icofont icofont-ui-user-group mr-2 ml-3")
+          a(href="#") Users
+        li.p-2
+          i(class="bx bxs-home mr-2 ml-3")
+          a(href="#") Settings
+  
+    #main
+      .top-menu.d-flex.align-items-center
+          i(class="icofont icofont-user ml-auto")
+          a(href="#" class="ml-2 mr-2") Anonymous user 
+      block content
+    script(src="/vendor/jquery/jquery.min.js") 
+    script(src="/vendor/waypoints/jquery.waypoints.min.js") 
+    script(src="/vendor/bootstrap/js/bootstrap.bundle.min.js")
+    script(src="/vendor/popper/popper.min.js")  
+    script(src="/vendor/aos/aos.js") 
+    script(src="javascripts/app.js") 
