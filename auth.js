@@ -3,8 +3,8 @@ var localStrategy = require('passport-local').Strategy;
 var User = require('./models/userAdmin');
 
 passport.use( new localStrategy(
-    function(email, password, done) {
-        User.getUserByEmail(email, function(err, user) {
+    function(username, password, done) {
+        User.getUserByUsername(username, function(err, user) {
             if(err) throw err;
 
             if(!user) {
@@ -20,6 +20,7 @@ passport.use( new localStrategy(
                     return done(null, false, {message: 'Invalid Password'})
                 }
             })
+            console.log(user)
         })
 
     }
@@ -35,4 +36,4 @@ passport.deserializeUser(function(id, done) {
     });
 })
 
-module.exports = passport.authenticate('local', {successRedirect: '/admin', failureRedirect: '/users/login', failureFlash: true})
+module.exports = passport.authenticate('local', {successRedirect: '/admin/products', failureRedirect: '/users/login', failureFlash: true})

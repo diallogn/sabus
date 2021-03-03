@@ -7,14 +7,14 @@ block content
         table.table
             thead
                 tr(class="row")
-                    td(class="col-sm-3") ID
-                    td(class="col-sm-2") Username
-                    td(class="col-sm-3") Password
-                    td(class="col-sm-4") Date
+                    td(class="col-sm-1 d-flex align-items-center justify-content-center") Username
+                    td(class="col-sm-3 d-flex align-items-center justify-content-center") Email
+                    td(class="col-sm-6 d-flex align-items-center justify-content-center") Password
+                    td(class="col-sm-2 d-flex align-items-center justify-content-center") Created At
             tbody
                 tr(class="row")
                     each user in users 
-                        td(class="col-sm-3") #{user.id}
-                        td(class="col-sm-2") #{user.username}
-                        td(class="col-sm-3") #{user.password}
-                        td(class="col-sm-4") #{user.date_formatted}
+                        td(class="col-sm-1 d-flex align-items-center justify-content-center") #{user.username}
+                        td(class="col-sm-3 d-flex align-items-center justify-content-center") #{user.email}
+                        td(class="col-sm-6 d-flex align-items-center justify-content-center") #{user.password}
+                        td(class="col-sm-2 d-flex align-items-center justify-content-center") #{user.date_formatted}

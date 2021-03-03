@@ -38,13 +38,14 @@ html(dir="rtr" lang="fr")
 
     div(class="c-wrapper" style="background:white")
       .c-header 
-        .container-fluid
-          a(href="#" class="c-header-brand")
-            i(class="icofont icofont-user mr-2")
-            | anonymous
-          
-          a(href="#" class="c-header-link")
-            h4  
+        a(href="#" class="c-header-brand ml-auto mr-4")
+          i(class="icofont icofont-user mr-2")
+          if user
+            span=user.username
+          if !user
+            span anonymous 
+        a(href="/admin/logout" class="c-header-nav mr-4") 
+          i(class="icofont icofont-logout mr-2")
       .c-body 
         .c-main
           block content

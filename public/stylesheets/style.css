@@ -27,10 +27,10 @@ a:hover {
 }
 
 .authForm {
-  height: 56vh;
+  height: 61vh;
 }
 .authForm2 {
-  height: 52vh;
+  height: 57vh;
 }
 /*--------------------------------------------------------------
 # Bootstrap  
@@ -58,9 +58,9 @@ header {
 # Banner 
 --------------------------------------------------------------*/
 .banner {
-  height: 80vh;
+  height: 60vh;
   color: white;
-  background: linear-gradient(rgba(96, 92, 91, 0.5) 50%, rgba(96, 92, 91, 0.5) 0% ), url('/images/banner.JPG') no-repeat;
+  background: linear-gradient(rgba(82, 82, 82, 0.5) 50%, rgba(82, 82, 82, 0.5) 0%),url('/images/banner.JPG') no-repeat;
   background-position: center;
   background-size: 100%;
   transition: all .3s;
@@ -79,7 +79,6 @@ header {
 }
 
 .banner h2 {
-  color: #eee;
   font-size: 24px;
 }
 .banner p, .banner-small p {

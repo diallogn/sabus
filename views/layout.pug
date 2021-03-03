@@ -21,11 +21,9 @@ html
 
         ul(class="navbar-nav flex-direction-row")
           li(class="nav-item mr-4")
-            a(href="/users/register" class="nav-link") Register
-          li(class="nav-item mr-4")
-            a(href="/users/login" class="nav-link") login
+            a(href="/users/register" class="nav-link") Home
     .container
-      if success_msg
+      if( success_msg)
         .alert.alert-success.m-2 #{success_msg}
       if error_msg 
         .alert.alert-danger.m-2 #{error_msg}

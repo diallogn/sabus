@@ -13,18 +13,22 @@ User_adminSchema = new Schema({
 User_adminSchema
 .virtual('date_formatted')
 .get(function() {
-    return DateTime.fromJSDate(this.date).toFormat('dd / LLL / yyyy')
+    return DateTime.fromJSDate(this.date).toFormat('dd - LLL - yyyy')
 });
 
 let User = module.exports = mongoose.model('UserAdmin', User_adminSchema);
 
 module.exports.createUser = function(newUser, callback) {
-    bcrypt.genSalt(10, function(err, salt) {
+    bcrypt.genSalt(8, function(err, salt) {
         bcrypt.hash(newUser.password, salt, function(err, hash) {
             newUser.password = hash;
             newUser.save(callback)
         })
     })
+}
+
+module.exports.getUserByUsername = function(username, callback) {
+    User.findOne({username: username}, callback)
 }
 
 module.exports.getUserByEmail = function(email, callback) {

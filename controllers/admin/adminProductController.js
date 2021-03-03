@@ -50,17 +50,21 @@ var upload = multer({storage: diskStorage, fileFilter: fileFilter});
 
 // Index
 exports.index = (req, res, next) => {
-    res.redirect('/admin/products');
+    res.redirect('/users/login');
 }
 // Listing
 exports.products = function (req, res, next) {
-    Product.find({})
-    .populate('category')
-    .populate('image_file')
-    .exec(function(err, data) {
-        if(err) {return next(err);}
-        res.render('admin/admin-index', {title: 'Products', products: data})
-    });
+    if(req.user) {
+        Product.find({})
+            .populate('category')
+            .populate('image_file')
+            .exec(function(err, data) {
+                if(err) {return next(err);}
+                res.render('admin/admin-index', {title: 'Products', products: data})
+            });
+        }else {
+            res.redirect('/users/login')
+        }
 }
 
 /*---------------------------------------------------- */

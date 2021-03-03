@@ -11,10 +11,14 @@ block content
                 h1.mt-4.mb-4=title
                 form(action="/users/login", method="post" class="authForm2") 
                     .form-group 
-                        input(type="email" name="email" id="email" class="form-control" value=(undefined === login ? '' : login.email) placeholder="email" required)
+                        label(for="username") Username: 
+                        input(type="text" name="username" id="username" class="form-control" value=(undefined === login ? '' : login.email) required)
                     .form-group 
-                        input(type="password" name="password" id="password" class="form-control" value=(undefined === login ? '' : login.password) placeholder="password" required)
+                        label(for="password") Password: 
+                        input(type="password" name="password" id="password" class="form-control" value=(undefined === login ? '' : login.password)  required)
                     input(type="submit" class="btn btn-primary" value="login")
+                    p.mt-4 You don't have account ? 
+                        a(href="/users/register") Register 
             .col-sm-2
              
              

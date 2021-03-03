@@ -11,14 +11,20 @@ block content
                 h1.mt-4.mb-4=title
                 form(action="", method="post" class="authForm") 
                     .form-group 
-                        input(type="text" name="username" id="name" class="form-control" value=(undefined === register ? '' : register.username) required placeholder="username")
+                        label(for="username") Username: 
+                        input(type="text" name="username" id="name" class="form-control" value=(undefined === register ? '' : register.username) required)
                     .form-group 
-                        input(type="email" name="email" id="email" class="form-control" value=(undefined === register ? '' : register.email) required placeholder="email")
+                        label(for="email") Email: 
+                        input(type="email" name="email" id="email" class="form-control" value=(undefined === register ? '' : register.email) required )
                     .form-group 
-                        input(type="password" name="password" id="password" class="form-control" value=(undefined === register ? '' : register.password) required placeholder="password")
+                        label(for="password") Password: 
+                        input(type="password" name="password" id="password" class="form-control" value=(undefined === register ? '' : register.password) required )
                     .form-group 
-                        input(type="password" name="password_confirm" id="password" class="form-control" value=(undefined === register ? '' : register.password) required placeholder="confirm password")
+                        label(for="confirm-password") Confirm password: 
+                        input(type="password" name="password_confirm" id="password" class="form-control" value=(undefined === register ? '' : register.password) required)
                     input(type="submit" class="btn btn-primary" value="register")
+                    p.mt-4 Do you have account ? 
+                        a(href="/users/login") login
             .col-sm-2
              
              
