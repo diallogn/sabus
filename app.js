@@ -13,7 +13,7 @@ var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var adminRouter = require('./routes/admin/index');
+var adminRouter = require('./routes/admin');
 
 var app = express();
 // Database

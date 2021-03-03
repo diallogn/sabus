@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-var admin_product_controller = require('../../controllers/admin/adminProductController');
-var admin_category_controller = require('../../controllers/admin/adminCategoryController');
-var admin_user_controller = require('../../controllers/admin/adminUserController');
+var admin_product_controller = require('../controllers/admin/adminProductController');
+var admin_category_controller = require('../controllers/admin/adminCategoryController');
+var admin_user_controller = require('../controllers/admin/adminUserController');
 
 // Product Controller
 router.get('/', admin_product_controller.index);

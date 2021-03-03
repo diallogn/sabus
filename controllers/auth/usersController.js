@@ -6,7 +6,7 @@ var jwt = require('jsonwebtoken');
 var User = require('../../models/userAdmin');
 
 exports.user_register_get =  function(req, res, next) {
-    res.render('users/register', {title: 'Register'})
+    res.render('auth/register', {title: 'Register'})
 }
 
 exports.user_register_post =  [
@@ -29,13 +29,13 @@ exports.user_register_post =  [
     if(!errors.isEmpty()) {
       // They are errors
       console.log(errors)
-      res.render('register', {title: 'Register',register: data, errors: req.flash()})
+      res.render('auth/register', {title: 'Register',register: data, errors: req.flash()})
     }else {
       // Success
       if(data.password !== req.body.password_confirm) {
         
         req.flash('match', 'You can\'t enter the same password')
-        res.render('users/register', {title: 'Register',register: data, errors: req.flash()})
+        res.render('auth/register', {title: 'Register',register: data, errors: req.flash()})
       }
 
       User.findOne({email: req.body.email})
@@ -44,14 +44,14 @@ exports.user_register_post =  [
 
           if(found) {
             req.flash('found', 'This email is already exists.')
-            res.render('users/register', {title: 'Register',register: data, errors: req.flash()})
+            res.render('auth/register', {title: 'Register',register: data, errors: req.flash()})
           }else {
             let newUser = new User(data);
             
             User.createUser(newUser, (err, user) => {
               if(err){ return next(err);}
             });
-            res.redirect('/users/login');
+            res.redirect('/auth/login');
           }
         })
     }
@@ -59,7 +59,7 @@ exports.user_register_post =  [
 ]
 
 exports.user_login_get = (req, res, next) => {
-    res.render('users/login', {title: 'Login'});
+    res.render('auth/login', {title: 'Login'});
 }
 
 exports.user_login_post =  (req, res, next) => {

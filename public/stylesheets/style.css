@@ -60,9 +60,9 @@ header {
 .banner {
   height: 80vh;
   color: white;
-  background: linear-gradient(rgba(96, 92, 91, 0.3) 50%, rgba(96, 92, 91, 0.3) 0% ), url('/images/banner.jpg') no-repeat;
+  background: linear-gradient(rgba(96, 92, 91, 0.5) 50%, rgba(96, 92, 91, 0.5) 0% ), url('/images/banner.JPG') no-repeat;
   background-position: center;
-  background-size: cover;
+  background-size: 100%;
   transition: all .3s;
 }
 

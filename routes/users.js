@@ -3,7 +3,7 @@ var router = express.Router();
 var auth = require('../auth');
 
 // Controller
-var users_controller = require('../controllers/user/usersController');
+var users_controller = require('../controllers/auth/usersController');
 
 // Register
 router.get('/register', users_controller.user_register_get);
