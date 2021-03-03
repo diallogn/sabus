@@ -1,31 +1,40 @@
 var mongoose = require('mongoose');
-var { DateTime }= require('luxon');
+const category = require('./category');
+var { DateTime } = require('luxon');
+var Category = require('./category')
 var Schema = mongoose.Schema;
 
 var ProductSchema = new Schema({
-    name: {type: String, required: true, maxlength: 100},
-    price: {type: Number, required: false},
-    ean_13: {type: Number, required: false},
-    status: {type: Boolean, required: true , default: false},
+    name: {type: String, required: true},
+    price: {type: String, required: false},
+    ean_13: {type: Number, required: true},
+    status: {type: Boolean, required: false, default: false},
     tags: {type: String, required: true},
-    features: [{type: Object, required: false}],
-    categories: [{type: Schema.Types.ObjectId, ref: 'Category', required: true}],
-    description: {type: String, required: false},
-    image_file: {type: String, required: true},
-    date: {type: Date, default: Date.now}
+    features: {type: Object, required: true},
+    description: {type: Array, required: false},
+    category: {type: Schema.Types.ObjectId, ref: 'Category', required: true},
+    image_file: {type: Schema.Types.ObjectId, ref: 'Image', required: true},
+    review_client: [{type: Schema.Types.ObjectId, ref: 'reviewClient', required: false}],
+    date: {type: Date, default: Date.now()}
 });
-
-ProductSchema
-.virtual('url')
-.get(function(){
-    return '/product/' + this._id
-});
-
 
 ProductSchema
 .virtual('date_formatted')
-.get(function(){
-    return DateTime.fromJSDate(this.date).toFormat('dd / LLL / yyyy')
+.get(function() {
+    return DateTime.fromJSDate(this.date).toFormat('dd - LLL - yyyy')
+})
+
+ProductSchema
+.virtual('detail_url')
+.get(function() {
+    return '/admin/product/'+this._id +'/edit'
 });
 
+ProductSchema
+.virtual('category_name')
+.get(function () {
+    return Category.findOne(this.category).exec(function (err, data) {
+        if(err) throw err;
+    });
+})
 module.exports = mongoose.model('Product', ProductSchema);

@@ -1,0 +1,23 @@
+extends admin-layout
+block content 
+    .container-fluid
+        .d-flex.mb-2
+            h4=title
+            a(href="/admin/category/create" class="btn btn-primary ml-auto") Add category 
+
+        table.table
+            thead
+                tr(class="row")
+                    td(class="col-sm-3") ID
+                    td(class="col-sm-3") Name
+                    td(class="col-sm-3") Date
+                    td(class="col-sm-3") Action
+            tbody
+                tr(class="row")
+                    each category in categories 
+                        td(class="col-sm-3") #{category.id}
+                        td(class="col-sm-3") #{category.name}
+                        td(class="col-sm-3") #{category.date_formatted}
+                        td(class="col-sm-3")
+                            a(href="/admin/category/"+category.id+"/edit" class="text-primary") Edit 
+                            a(href="/admin/category/"+category.id+"/delete" class="text-danger") Delete 

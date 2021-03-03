@@ -1,0 +1,14 @@
+extends admin-layout 
+block content 
+    .container-fluid
+        if errors 
+            ul.list-untyled.m-2 
+                each error in errors 
+                    li.alert.alert-danger #{error.msg}
+        h4=title
+        form(action="", method="post") 
+            .form-group 
+                label(for="nameInput") Name: 
+                input(type="text" name="name" id="nameInput" placeholder="category" class="form-control" value=category.name) 
+            
+            input(type="submit" value="save change" class="btn btn-primary")

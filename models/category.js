@@ -1,14 +1,16 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var {DateTime} = require('luxon');
 
-var CategorySchema = new Schema({
-    name: {type: String, required: true, maxlength: 100}
+CategorySchema = new Schema({
+    name: {type: String, required: true},
+    date: {type: Date, default: Date.now()}
 });
 
 CategorySchema
-.virtual('url')
-.get(function(){
-    return '/'+this._id
+.virtual('date_formatted')
+.get(function () {
+    return DateTime.fromJSDate(this.date).toFormat('dd - LLL - yyyy');
 });
 
 module.exports = mongoose.model('Category', CategorySchema);

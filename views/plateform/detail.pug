@@ -1,0 +1,38 @@
+extends ../layout 
+
+block content 
+    .container 
+        div(class="row mt-4")
+            div(class="col-sm-6 d-flex justify-content-center")
+                img(src=`data:image/${product.image_file.img.contentType};base64,${product.image_file.img.data.toString('base64')}`, alt=product.image_file.name height="300px")
+            div(class="col-sm-6 prd-block text-center text-sm-left")
+                h6 #{product.name}
+                p 
+                    strong Category:  #{product.category.name}
+                if product.features
+                    p 
+                        strong Model:  #{product.features.model}
+                p 
+                    strong Price: #{product.price} GNF
+                
+                if product.description
+                    p 
+                        strong Description:
+                    ul 
+                        each desk in product.description 
+                            li=desk
+                a(href='/products/'+product.id+'/showroom' class="btn btn-primary") Où acheter
+        hr
+        div(class="row mt-4 mb-4")
+            h5(class="prd-title ml-4") LES PRODUITS DE MÊME FAMILLE
+            div(class="col-sm-12 thumbs justify-content-center justify-content-md-start")
+                each thumb in thumbs
+                    div(class="thumb")
+                        a(href='/products/'+thumb.id+'/details') 
+                           div(class="thumb-img" style=`background:url('data:image/${thumb.image_file.img.contentType};base64,${thumb.image_file.img.data.toString('base64')}')no-repeat;background-size:40%;background-position:center`)
+                        a(href='/products/'+thumb.id+'/details')
+                            div(class="thumb-name")
+                                p=thumb.name
+                    a(href="/" class="prd-plus")  Voir Plus
+                
+

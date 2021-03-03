@@ -26,6 +26,12 @@ a:hover {
   background: #FF0000;
 }
 
+.authForm {
+  height: 56vh;
+}
+.authForm2 {
+  height: 52vh;
+}
 /*--------------------------------------------------------------
 # Bootstrap  
 --------------------------------------------------------------*/
@@ -37,7 +43,7 @@ a:hover {
 # Header  
 --------------------------------------------------------------*/
 header {
-  box-shadow: 0px 0px 7px #aaa;
+  box-shadow: 0px 0px 1px #aaa;
 }
 .navbar-nav {
   flex-direction: row;
@@ -61,7 +67,6 @@ header {
 }
 
 .banner-small {
-  margin-top: 70px;
   height: 30vh;
   border-bottom: 1px solid rgb(230, 230, 230);
   transition: all .3s;
@@ -106,6 +111,7 @@ header {
 
 .card-img {
   height: 150px;
+  max-width: 200px;
   text-align: center;
 }
 

@@ -2,18 +2,23 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var flash = require('connect-flash');
+var passport  = require('passport')
+var localStrategy = require('passport-local').Strategy;
+
 var logger = require('morgan');
 var mongoose = require('mongoose');
 
+
 var indexRouter = require('./routes/index');
-var electromenagerRouter = require('./routes/ectromenager');
-var phoneRouter = require('./routes/phone');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin/index');
 
 var app = express();
 // Database
-var mongoDB = "mongodb://localhost/sabu";
+var cluster = 'mongodb+srv://celafinde:69305565@cluster0.wmifd.mongodb.net/sabus-app'
+var mongoDB = "mongodb://localhost/sabus-app";
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error: '));
@@ -28,11 +33,32 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// session
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}));
+
+// Passport init
+app.use(passport.initialize())
+app.use(passport.session())
+
+// flash
+app.use(flash())
+
+
 app.use('/', indexRouter);
-app.use('/nos-produits/electromenager', electromenagerRouter);
-app.use('/nos-produits/telephone', phoneRouter);
 app.use('/admin', adminRouter);
 app.use('/users', usersRouter);
+
+// Global vars
+app.use((req, res, next)=> {
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.error_msg = req.flash('error_msg')
+  res.locals.error = req.flash('error')
+  next()
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

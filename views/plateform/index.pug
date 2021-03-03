@@ -1,0 +1,24 @@
+extends ../layout 
+
+block content 
+    div(class="banner d-flex align-items-center")
+        .container
+            .row 
+                div(class="col-sm-7 ")
+                    div(class="position-relative" data-aos="zoom-in" data-aos-delay="100")
+                        h1(class="p-0") Sabu's Shop 
+                        h2 Le magasin d'électronique le plus proche de vous. 
+                div(class="col-sm-5 d-none")
+                    img(src="/images/products/electro/no-prd1.png", height="200" alt="")
+    .container
+        h5(class="mt-4")=title1
+        div(id="products")
+            each product in products
+                div(class="card mt-4")
+                    .card-img
+                        img(src=`data:image/${product.image_file.img.contentType};base64,${product.image_file.img.data.toString('base64')}` , height="100px")
+                    .card-title
+                        h5(class="card-title") #{product.name}
+                    a(href='/products/'+product.id+'/details' class="card-detail") Détails 
+
+            

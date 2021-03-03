@@ -1,43 +1,78 @@
-extends admin-layout
+extends admin-layout 
 block content 
-    .container-fluid
-        h4.mt-3=title
-        form(action="/admin/ajouter-un-produit" method="post" enctype="multipart/") 
+    .container-fluid 
+        if errors 
+            ul.list-unstyled.m-2 
+                each error in errors
+                    li.alert.alert-danger #{error.msg}
+        h4=title
+        form(action="", method="post" enctype="multipart/form-data")
+            .form-group 
+                div(class="custom-control custom-switch") 
+                    input(type="checkbox" class="custom-control-input" name="prd_status" id="customSwitch1")
+                    label(for="customSwitch1" class="custom-control-label") Published
+            .row 
+                .col-sm-6
+                    .form-group 
+                        label(for="name") Name: 
+                        input(type="text" name="prd_name" class="form-control" id="name" value=(undefined === product ? '' : product.prd_name) ) 
+                .col-sm-6
+                    .form-group 
+                        label(for="price") Price: 
+                        input(type="text" name="prd_price" class="form-control" id="price" value=(undefined === product ? '' : product.prd_price) required) 
+            .row 
+                .col-sm-6 
+                    .form-group 
+                        label(for="ean_13") ean_13: 
+                        input(type="text" name="prd_ean_13" class="form-control" id="ean_13" value=(undefined === product ? '' : product.prd_ean_13) required)   
+                .col-sm-6 
+                    .form-group 
+                        label(for="tags") Tags: 
+                        input(type="text" name="prd_tags" class="form-control" id="tags" value=(undefined === product ? '' : product.prd_tags) required) 
+            .row 
+                .col-sm-6
+                    .form-group
+                        label(for="category") Category: 
+                        select(name="prd_category" class="form-control" id="category")
+                            each category in categories 
+                                option(value=category.name) #{category.name} 
+                .col-sm-6
+                    .form-group 
+                        label(for="file_image") File Image: 
+                        input(type="file" name="prd_image_file" id="file_image" class="form-control-file" value=(undefined === product ? '' : product.prd_image_file) required)
             .row
                 .col-sm-6
-                    .form-group 
-                        label(for="name_prd") Name: 
-                        input(type="text" class="form-control" name="name" id="name_prd" ) 
-                .col-sm-6
-                    .form-group 
-                        label(for="price_prd") Price: 
-                        input(type="text" class="form-control"  name="price" id="price_prd")
-            .row 
-                .col-sm-6  
-                    .form-group 
-                        label(for="ean_13_prd") EAN-13 code: 
-                        input(type="text" class="form-control"  name="ean_13" id="ean_13_prd") 
-                .col-sm-6  
                     .form-group
-                        label(for="category_prd") Categories: 
-                        select(name="category_prd" id="category_prd" class="form-control") 
-                            each category in categories 
-                                option #{category.name} 
-            .row 
+                        label(for="description") Description:
+                        ul.list-unstyled#listGroup
+                            if descList
+                                each desk in descList
+                                    if desk
+                                        li.d-flex.align-items-center.m-2
+                                            i(class="bx bx-x bg-danger mr-2" id="btnDelete" type="button" style="color:white;")
+                                            input(type="text" name="prd_description" class="form-control" value=desk)
+                        input(type="button" value="+ add new item" id="newInput" class="btn border m-2")
                 .col-sm-6
                     .form-group 
-                        label(for="file_prd") File image: 
-                        input(type="file" class="form-control-file"  name="file_prd" id="file_prd") 
+                        label(for="features") Features: 
+                        ul.list-unstyled.ml-3#featureGroup 
+                                if featList 
+                                    
+                                    each value in featList 
 
-                .col-sm-6
-                    .form-group 
-                        label(for="tags_prd") Tags: 
-                        input(type="text" class="form-control"  name="tags" id="tags_prd") 
-            .form-group 
-                label(for="desc_prd") Description:  
-                textarea( name="desc_prd" id="desc_prd", class="form-control" cols="20", rows="10") 
+                                        li.m-2 
+                                            .row
+                                                .col-sm-1.d-flex.align-items-center.justify-content-center 
+                                                    i(class="bx bx-x bg-danger color-white" id="deleteFeature" type="button")
+                                                .col-sm-3
+                                                    input(type="text" class="form-control" name="prd_feature_color_key" value="")
+                                                .col-sm-8
+                                                    input(type="text" name="prd_feature_color_value" class="form-control " value=value)
 
-            label(for="published_prd") Published: 
-            input(type="checkbox" class="m-2"  name="published_prd" id="published_prd") 
-            .pt-3.pb-3
-                input(type="submit" value="save changes" class="btn btn-primary")
+                        input(type="button" value="+ add new item" id="addNewFeature" class="btn border mt-2" )
+            
+                input(type="number" name="prd_desc_counter" id="countDesk" class="form-control d-none" )
+                input(type="number" name="prd_feat_counter" id="countFeat" class="form-control d-none" )
+            
+            .c-footer.bg-white
+                input(type="submit" value="Create product" class="btn btn-primary ml-auto mt-2 mb-2")

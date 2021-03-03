@@ -1,0 +1,14 @@
+extends admin-layout 
+block content 
+    .container-fluid
+        if errors
+            ul.list-unstyled.m-2 
+                each error in errors 
+                    li.alert.alert-danger #{error}
+        h4=title
+        form(action="/admin/category/create", method="post") 
+            .form-group 
+                label(for="nameInput") Name: 
+                input(type="text" name="name" id="nameInput" placeholder="category" class="form-control") 
+            
+            input(type="submit" value="submit" class="btn btn-primary")

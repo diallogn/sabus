@@ -1,36 +1,40 @@
 extends admin-layout 
-block content
-    .menu.d-flex.p-2.align-items-center
-            h3.mr-auto Product 
-            form(action="", method="get" class="border form-search") 
-                i(class="icofont icofont-search m-2")
-                input(type="text" name="search" placeholder="Search")
-            a(href="/admin/ajouter-un-produit" class="btn sabus-bg ml-2 mr-2") Add Product 
-    .container-fluid
-        table.table
-            thead 
-                tr 
-                    th(scope="col") ID
-                    th(scope="col") Published
-                    th(scope="col") Name
-                    th(scope="col") Price
-                    th(scope="col") Created at
-                    th(scope="col") Tags
-                    th(scope="col") Actions
-            tbody 
+block content 
+    .container-fluid 
+        .d-flex.mb-2
+            h4=title
+            a(href="/admin/products/create" class="btn btn-primary ml-auto") Add product 
+        table.table.c-table
+            thead
+                tr(class="row text-center")
+                    td(class="col-sm-1 d-flex align-items-center justify-content-center") Published
+                    td(class="col-sm-2 d-flex align-items-center justify-content-center") Name
+                    td(class="col-sm-1 d-flex align-items-center justify-content-center") Image
+                    td(class="col-sm-1 d-flex align-items-center justify-content-center") Price
+                    td(class="col-sm-3 d-flex align-items-center justify-content-center") tags
+                    td(class="col-sm-2 d-flex align-items-center justify-content-center") Date
+                    td(class="col-sm-2 d-flex align-items-center justify-content-center") Actions
+            tbody
                 each product in products 
-                    tr 
-                        td(scope="row") #{product._id}
-                        td= product.status
-                        td #{product.name}
-                        td #{product.price + '.00'}
-                        td=product.date_formatted
-                        td=product.tags
-                        td 
-                            a(href="/admin/produit/" + product.id + "/edit" class="text-primary") Edit 
-                            a(href="/admin/produit/" + product.id + "/delete" class="text-danger") Delete 
-        .d-flex.align-items-center.p-3.border-top.fixed-bottom
-            strong 100 results
-            .ml-auto
-                .btn.border.mr-2 prev
-                .btn.border next
+                    tr(class="row text-center")
+                        td(class="col-sm-1 d-flex align-items-center justify-content-center") 
+                            div(class="custom-control custom-switch") 
+                                input(type="checkbox" class="custom-control-input" id="customSwitch1" checked=product.status)
+                                label(for="customSwitch1" class="custom-control-label") 
+                        td(class="col-sm-2 d-flex align-items-center justify-content-center") #{product.name}
+                        td(class="col-sm-1 d-flex align-items-center justify-content-center") 
+                            img(src=`data:image/${product.image_file.img.contentType};base64,${product.image_file.img.data.toString('base64')}`, alt=product.image_file.name height=30)        
+                        td(class="col-sm-1 d-flex align-items-center justify-content-center") #{product.price}
+                        td(class="col-sm-3 d-flex align-items-center justify-content-center") #{product.tags}
+                        td(class="col-sm-2 d-flex align-items-center justify-content-center") #{product.date_formatted}
+                        td(class="col-sm-2 d-flex align-items-center justify-content-center") 
+                            a(href="/admin/product/" + product.id + "/edit" class="text-primary mr-2") Edit 
+                            a(href="/admin/product/" + product.id + "/delete" class="text-danger") Delete 
+    
+    div(style="height: 50px")
+    footer(class="c-footer fixed-bottom" style="background:white;") 
+        strong.c-footer-brand #{products.length} results 
+        .ml-auto 
+            a(href="/admin/products/prev/?limit="+products.length class="btn border") Prev 
+            a(href="/admin/products/next/?limit="+products.length class="btn border ml-2") Next 
+        

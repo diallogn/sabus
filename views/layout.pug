@@ -13,7 +13,7 @@ html
     link(rel="stylesheet", href="/vendor/aos/aos.css")
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    header(class="navbar navbar-light fixed-top" style="background: white;")
+    header(class="navbar navbar-light" style="background: white;")
       div(class="container")
         a(href="/" class="navbar-brand d-flex align-items-center logo")
           img(src="/images/logo/sabu's 2.png", alt="Logo" height="50" class="mr-2")
@@ -21,9 +21,16 @@ html
 
         ul(class="navbar-nav flex-direction-row")
           li(class="nav-item mr-4")
-            a(href="/nos-produits/electromenager" class="nav-link") Electroménager 
+            a(href="/users/register" class="nav-link") Register
           li(class="nav-item mr-4")
-            a(href="/nos-produits/telephone" class="nav-link") Téléphone
+            a(href="/users/login" class="nav-link") login
+    .container
+      if success_msg
+        .alert.alert-success.m-2 #{success_msg}
+      if error_msg 
+        .alert.alert-danger.m-2 #{error_msg}
+      if error
+        .alert.alert-danger.m-2 #{error}
 
     block content
     footer.mt-4

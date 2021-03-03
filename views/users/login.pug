@@ -1,0 +1,20 @@
+extends ../layout 
+block content 
+    .container 
+        if errors 
+            ul.list-unstyled.mt-4
+                each error in errors 
+                    li.alert.alert-danger.m-2 #{error}
+        .row 
+            .col-sm-2
+            .col-sm-8
+                h1.mt-4.mb-4=title
+                form(action="/users/login", method="post" class="authForm2") 
+                    .form-group 
+                        input(type="email" name="email" id="email" class="form-control" value=(undefined === login ? '' : login.email) placeholder="email" required)
+                    .form-group 
+                        input(type="password" name="password" id="password" class="form-control" value=(undefined === login ? '' : login.password) placeholder="password" required)
+                    input(type="submit" class="btn btn-primary" value="login")
+            .col-sm-2
+             
+             

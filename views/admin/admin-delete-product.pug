@@ -1,0 +1,20 @@
+extends admin-layout 
+block content 
+    .container-fluid
+        if errors 
+            ul.list-unstyled 
+                each error in errors
+                    li.alert.alert-danger.m-2 #{error}
+        h1=title
+        p Si vous voulez vraiment suprimer ce produit, entrez son nom. 
+            strong ( #{product.name} )
+        .row 
+            .col-sm-4
+                form(action="", method="post")
+                    .form-group 
+                        label(for="name") Name: 
+                        input(type="text" name="name" class="form-control" required) 
+                    input(type="submit" value="Delete" class="btn btn-danger") 
+            .col-sm-8
+                .d-flex.justify-content-center.align-items-center
+                    img(src=`data:image/${product.image_file.img.contentType};base64,${product.image_file.img.data.toString('base64')}`, alt=product.image_file.name height=250)

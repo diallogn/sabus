@@ -1,0 +1,16 @@
+extends admin-layout 
+block content 
+    .container-fluid
+        if errors 
+            ul.list-unstyled.m-2 
+                each error in errors 
+                    li.alert.alert-danger #{error}
+        h4=title
+        p.text-muted If you realy wand to delete 
+            strong #{category.name} 
+            | in your database, name it in the input field.
+        form(action="", method="post") 
+            .form-group 
+                label(for="nameInput") Name: 
+                input(type="text" name="name" class="form-control" placeholder="category") 
+            input(type="submit" value="Delete" class="btn btn-danger")

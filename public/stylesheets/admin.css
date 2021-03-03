@@ -1,116 +1,22 @@
-
-/*--------------------------------------------------------------
-# General 
---------------------------------------------------------------*/
-body {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
+.bg-white {
+  color: inherit;
+  background-color: #fff;
+}
+.color-white {
+  color: white;
 }
 
-h1, h2, h3, h4, h5, h5 {
-    font-family: 'Montserrat', sans-serif;
+ul {
+  padding: 0;
+  margin: 0;
 }
+.wallpiper {
+  display: flex;
 
-a {
-    color: #242525;
-}
-a:hover {
-    color: #242525;
-    text-decoration: none;
-}
-
-#aria {
-    display: flex;
-}
-
-.sabus-color {
-    color: #5669CB;
-}
-
-.sabus-bg {
-    color: white;
-    background: rgb(255, 1, 1);
-}
-
-.sabus-bg:hover {
-    color:white;
-    background:red;
-}
-/*--------------------------------------------------------------
-# Aside 
---------------------------------------------------------------*/
-#aside {
-    height: 100vh;
-    width: 200px;
-    font-size: 14px;
-    font-weight: 300;
-    background: #F5F5F5;
-    transition: .3s;
-}
-
-#aside a {
-    font-weight: 500;
-}
-#aside .active {
-    background: #DDDDDD;
-}
-#aside li:hover {
-    background: #DDDDDD;
-}
-#aside .topbar {
-    height: 50px;
-    display: flex;
-    align-items: center;
-}
-#aside .topbar h5 {
-    font-size: 28px;
-    font-family: 'bernard MT Condensed';
-    margin-bottom: 0;
-}
-
-#aside .dropdown-item {
-    font-size: 14px;
-}
-/*--------------------------------------------------------------
-# Main 
---------------------------------------------------------------*/
-#main {
-    height: 100vh;
-    width: 100%;
-    background: #fff;
-    position: relative;
-    margin-left: 200px;
-}
-#main .btn {
-    padding: 5px 10px ;
-    font-size: 13px;
-}
-#main .top-menu {
-    height: 50px;
-    background: #F5F5F5;
-}
-#main .form-search {
-    padding: 5px;
-    border-radius: 4px;
-    width: 420px;
-    position: relative;
-}
-#main .menu form input[type="text"] {
-    border: 0;
-    font-size: 12px;
-    padding: 5px;
-    width: calc(100% - 50px);
-}
-
-#main .menu form input[type="text"]:hover {
-    border: none;
-    background: none;
+  align-items: center;
+  justify-content: center;
 } 
-
-#main .fixed-bottom {
-    left: 190px;
-    right: 15px;
-    background: white;
+.fixed-bottom {
+  left: 256px !important;
 }
-
 
