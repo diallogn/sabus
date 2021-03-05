@@ -1,0 +1,10 @@
+extends admin-layout 
+block content 
+    .container
+        h1=title
+        p Les informations concernant l'utilisateur actuellement connecté.
+        p 
+            strong Username: #{user.username}
+        p 
+            strong Email: #{user.email}
+        a(href="/admin/user/"+user.id+'/edit' class="btn btn-primary") Editer

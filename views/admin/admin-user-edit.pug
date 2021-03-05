@@ -1,0 +1,16 @@
+extends admin-layout 
+block content 
+    .container 
+        h1=title
+        form(action="", method="post")
+            .row 
+                .col-sm-6
+                    .form-group 
+                        label(for="username") Username: 
+                        input(type="text" name="username" class="form-control" value=user.username)
+                    .form-group 
+                        label(for="username") Email: 
+                        input(type="text" name="username" class="form-control" value=user.email)   
+                .col-sm-6.d-flex.align-items-center.justify-content-center
+                    #avatar
+            input(type="submit" value="Save Changes" class="btn btn-primary")

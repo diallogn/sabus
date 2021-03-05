@@ -22,3 +22,17 @@ exports.logout = (req, res, next) => {
     req.logout()
     res.redirect('/users/login')
 }
+
+exports.user_info = (req, res, next) => {
+    User.findById(req.params.id, (err, found) => {
+        if(err){return next(err)}
+        res.render('admin/admin-user-info', {title: found.username, user: found})
+    })
+}
+
+exports.user_edit_get = (req, res, next) => {
+    User.findById(req.params.id, (err, found) => {
+        if(err){return next(err)}
+        res.render('admin/admin-user-edit', {title: 'Edit', user: found})
+    })
+}

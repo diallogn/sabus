@@ -34,4 +34,8 @@ router.post('/category/:id/delete', admin_category_controller.category_delete_po
 router.get('/users', admin_user_controller.users)
 router.get('/logout', admin_user_controller.logout)
 
+//Administrator
+router.get('/:id/me', admin_user_controller.user_info)
+router.get('/user/:id/edit', admin_user_controller.user_edit_get)
+
 module.exports = router;

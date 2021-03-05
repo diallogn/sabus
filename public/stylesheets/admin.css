@@ -23,3 +23,11 @@ a{
   left: 256px !important;
 }
 
+#avatar {
+  width: 200px;
+  height: 200px;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+}
+

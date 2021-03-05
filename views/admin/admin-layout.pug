@@ -38,7 +38,7 @@ html(dir="rtr" lang="fr")
 
     div(class="c-wrapper" style="background:white")
       .c-header 
-        a(href="#" class="c-header-brand ml-auto mr-4")
+        a(href="/admin/"+user.id+'/me' class="c-header-brand ml-auto mr-4")
           i(class="icofont icofont-user mr-2")
           if user
             span=user.username

@@ -6,7 +6,7 @@ block content
             .row 
                 div(class="col-sm-7 ")
                     div(class="position-relative" data-aos="zoom-in" data-aos-delay="100")
-                        h1(class="p-0") Sabu's Shop 
+                        h1(class="p-0") Sabus
                         h2 Le magasin d'électronique le plus proche de vous. 
     .container
         h5(class="mt-4")=title1
@@ -17,6 +17,7 @@ block content
                         img(src=`data:image/${product.image_file.img.contentType};base64,${product.image_file.img.data.toString('base64')}` , height="100px")
                     .card-title
                         h5(class="card-title") #{product.name}
+                        strong #{product.price} GNF
                     a(href='/products/'+product.id+'/details' class="card-detail") Détails 
 
             
