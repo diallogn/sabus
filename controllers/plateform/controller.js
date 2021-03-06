@@ -5,7 +5,7 @@ exports.index = function(req, res, next) {
         .populate('image_file')
         .exec(function(err, data){
             if (err) {next(err)}
-            res.render('plateform/index', {title: "Products", products: data});
+            res.render('plateform/index', {title: "Catalogue", products: data});
     });
 }
 

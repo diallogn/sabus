@@ -1,15 +1,40 @@
 extends ../layout 
 
 block content 
-    div(class="banner d-flex align-items-center")
-        .container
-            .row 
-                div(class="col-sm-7 ")
-                    div(class="position-relative" data-aos="zoom-in" data-aos-delay="100")
-                        h1(class="p-0") Sabus
-                        h2 Le magasin d'électronique le plus proche de vous. 
+    div(id="introCarousel" class="carousel slide carousel-fade" data-mdb-ride="carousel")
+        ol(class="carousel-indicators")
+            li(data-mdb-target="#introCarousel" data-mdb-slide-to="0" class="active")
+            li(data-mdb-target="#introCarousel" data-mdb-slide-to="1")
+            li(data-mdb-target="#introCarousel" data-mdb-slide-to="2")
+
+        div(class="carousel-inner")
+            div(class="carousel-item active")
+                div(class="mask" style="background-color: rgba(0, 0, 0, 0.1);")
+                    div(class="d-flex justify-content-center align-items-center h-100")
+                        div(class="text-white text-center")
+                            h1(class="mb-3") Learn Bootstrap 5 with MDB
+        
+            div(class="carousel-item")
+                div(class="mask" style="background-color: rgba(0, 0, 0, 0.6);")
+                    div(class="d-flex justify-content-center align-items-center h-100")
+                        div(class="text-white text-center")
+                            h1(class="mb-3") You can place here any content
+            
+            div(class="carousel-item")
+                div(class="mask" style="background: linear-gradient(45deg,rgba(29, 236, 197, 0.7),rgba(91, 14, 214, 0.7) 100%)")
+                    div(class="d-flex justify-content-center align-items-center h-100")
+                        div(class="text-white text-center")
+                            h1(class="mb-3") any content
+
+        a(class="carousel-control-prev" href="#introCarousel" role="button" data-mdb-slide="prev" ) 
+            span(class="carousel-control-prev-icon" aria-hidden="true")
+            span(class="sr-only") Previous
+        
+        a(class="carousel-control-next" href="#introCarousel" role="button" data-mdb-slide="next" ) 
+            span(class="carousel-control-next-icon" aria-hidden="true")
+            span(class="sr-only") Next
     .container
-        h5(class="mt-4")=title1
+        h5(class="mt-4")=title
         div(id="products")
             each product in products
                 div(class="card mt-4")
