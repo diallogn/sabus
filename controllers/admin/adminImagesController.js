@@ -11,7 +11,7 @@ var diskStorage = multer.diskStorage({
       cb(null, './public/images/forsite/')
     },  
     filename: function (req, file, cb) {
-      cb(null, "SABUS_" + Date.now() + '_'+ path.extname(file.originalname))
+      cb(null, "SABUS_" + Date.now() + path.extname(file.originalname))
     }
 });
   

@@ -36,21 +36,43 @@ exports.index = function(req, res, next) {
 }
 
 exports.prd_detail = function(req, res, next) {
-    Product.findById(req.params.id)
-        .populate('image_file')
-        .populate('category')
-        .exec(function(err, data){
-            if (err) {next(err)}
-            
-            Product.find({status: true, category: data.category.id}) 
-            .populate('image_file')
-            .populate('category')  
-            .exec((err, f) => {
-                if(err) { return next(err);}
 
-                res.render('plateform/detail', {title: 'Sabus', product: data, thumbs: f})
-            })
-    });
+    async.parallel({
+        logo: function(callback) {
+            Cloud.findOne({name: 'logo'}).exec(callback)
+        },
+        banner: function(callback) {
+            Cloud.findOne({name: 'banner'}).exec(callback)
+        },
+        categories: function(callback) {
+            Category.find(callback)
+        },
+        product: function(callback) {
+            Product.findById(req.params.id).populate('image_file').populate('category').exec(callback)
+        },
+        thumbs: function(callback) {
+            Product.find({status: true}).populate('image_file').populate('category').exec(callback)
+        }
+    },
+    (err, results) => {
+        if(err){ return next(err);}
+        let thumbs = []
+        let features = []
+
+        // Features
+        for(var i in results.product.features) {
+            features.push({key: i, value:results.product.features[i] })
+        }
+
+        // Thumbs
+        results.thumbs.forEach( thumb => {
+            if(results.product.category.id == thumb.category.id){
+                thumbs.push(thumb)
+            }
+        })
+        res.render('plateform/detail', {title: 'Sabus', logo: results.logo,  categories: results.categories, banner: results.banner, product: results.product, features: features, thumbs: thumbs})
+    })
+
 }
 
 exports.showroom = function(req, res, next) {

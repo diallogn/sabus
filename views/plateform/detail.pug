@@ -1,28 +1,61 @@
 extends ../layout 
+block header 
+    header(id="header2" class="navbar navbar-light" style="background: white;")
+      div(class="container")
+        a(href="/" class="navbar-brand d-flex align-items-center logo")
 
-block content 
+          if logo
+            img(src=`data:image/${logo.img.contentType};base64,${logo.img.data.toString('base64')}`, alt="Logo" height="50" class="mr-2")
+          h3(class="m-0") Sabus
+
+        ul(class="navbar-nav flex-direction-row nav-menu d-none d-md-flex")
+          li(class="nav-item mr-4")
+            a(href="/users/register" class="nav-link") Electroménager
+          li(class="nav-item mr-4")
+            a(href="/users/register" class="nav-link") TV
+          li(class="nav-item mr-4")
+            a(href="/users/register" class="nav-link") Cuisine
+          li(class="nav-item mr-4 drop-down")
+            a(href="/users/register" class="nav-link") Categories 
+            ul.list-unstyled 
+              each category in categories 
+                li(class="")
+                  a(href="#" class="") #{category.name}
+block content  
+    
     .container 
         div(class="row mt-4")
-            div(class="col-sm-6 d-flex justify-content-center")
+            div(class="col-md-6 d-flex justify-content-center mt-4 mb-4")
                 img(src=`data:image/${product.image_file.img.contentType};base64,${product.image_file.img.data.toString('base64')}`, alt=product.image_file.name height="300px")
-            div(class="col-sm-6 prd-block text-center text-sm-left")
-                h6 #{product.name}
-                p 
-                    strong Category:  #{product.category.name}
+            div(class="col-md-6 info-block text-xs-center mt-4")
+                h4=product.name
+                span.d-block.mb-2 Catégorie :  #{product.category.name}
                 if product.features
-                    p 
-                        strong Model:  #{product.features.model}
-                p 
-                    strong Price: #{product.price} GNF
-                
-                if product.description
-                    p 
-                        strong Description:
-                    ul 
+                    span.d-block.mb-2  Modèle :  #{product.features.model}
+
+                span.d-block.mb-2 
+                    strong Prix : #{product.price} GNF
+                if product.description 
+                    p
                         each desk in product.description 
-                            li=desk
+                            span=desk
+                            | . 
                 a(href='/products/'+product.id+'/showroom' class="btn btn-primary") Où acheter
-        hr
+        if (features.length != 0) 
+            table(class="table table-striped" width="100%" )
+                thead(width="100%")
+                    tr 
+                        td Caractéristiques technique
+                        td
+                tbody 
+                    each feature in features 
+                        tr 
+                            td
+                                strong #{feature.key}
+                            td
+                                strong #{feature.value}
+        if (features.length == 0) 
+            hr
         div(class="row mt-4 mb-4")
             h5(class="prd-title ml-4") LES PRODUITS DE MÊME FAMILLE
             div(class="col-sm-12 thumbs justify-content-center justify-content-md-start")
@@ -34,5 +67,23 @@ block content
                             div(class="thumb-name")
                                 p=thumb.name
                     a(href="/" class="prd-plus")  Voir Plus
+block footer 
+    footer
+      div(class="container d-md-flex py-4")
+        div(class="text-center text-md-left mr-auto")
+          p
+            strong &copy; 2021 Sabu's Shop.
+            | Tous droit reservé
+          span Created by 
+            a(href="#") Celafinde Agency
+        div(class="social-links text-center text-md-right")
+          a(href="#") 
+            i(class="bx bxl-twitter")
+          a(href="#") 
+            i(class="bx bxl-facebook")
+          a(href="#") 
+            i(class="bx bxl-instagram")
+          a(href="#") 
+            i(class="bx bxl-linkedin")
                 
 
