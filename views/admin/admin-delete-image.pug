@@ -1,0 +1,19 @@
+extends admin-layout 
+block content 
+    .container 
+        if errors 
+            each err in errors
+                div(class="alert alert-danger mb-2") #{err}
+        h1=title
+        form(action="", method="post") 
+            p si vous voulez vraiment suprimer cette image, veillez saisir son nom pour confirmer. 
+                strong ( #{image.name} )
+            .row   
+                .col-sm-4
+                    .form-group 
+                        label(for="name") Name: 
+                        input(type="text" name="name" class="form-control")
+                    .form-group    
+                        input(type="submit" value="Delete Image" class="btn btn-danger")
+                .col-sm-8.d-flex.justify-content-center.align-items-center
+                    img(src=`data:image/${image.img.contentType};base64,${image.img.data.toString('base64')}`, alt=image.name height=200)

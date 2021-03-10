@@ -14,52 +14,19 @@ html
     link(rel="stylesheet", href="/vendor/owl.carousel/assets/owl.carousel.min.css")
     link(rel="stylesheet", href="/vendor/owl.carousel/assets/owl.carousel.min.css")
     link(rel="stylesheet", href="/vendor/aos/aos.css")
-    link(rel="stylesheet", href="/vendor/font-awesome/font-awesome.min.css")
+    link(rel="stylesheet", href="/vendor/fontawesome/css/all.css")
     link(rel="stylesheet", href="/vendor/mdb/css/mdb.min.css")
     link(rel="stylesheet", href="/stylesheets/main.css")
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    header(id="header1")
-    header(id="header2" class="navbar navbar-light" style="background: white;")
-      div(class="container")
-        a(href="/" class="navbar-brand d-flex align-items-center logo")
-          img(src="/images/logo/sabu's 2.png", alt="Logo" height="50" class="mr-2")
-          h3(class="m-0") Sabus
-
-        ul(class="navbar-nav flex-direction-row")
-          li(class="nav-item mr-4")
-            a(href="/users/register" class="nav-link") Home
-    .container
-      if success_msg
-        .alert.alert-success.m-2 #{success_msg}
-      if error_msg 
-        .alert.alert-danger.m-2 #{error_msg}
-      if error
-        .alert.alert-danger.m-2 #{error}
-
+    block header
     block content
-    footer.mt-4
-      div(class="container d-md-flex py-4")
-        div(class="text-center text-md-left mr-auto")
-          p
-            strong &copy; 2021 Sabu's Shop.
-            | Tous droit reservé
-          span Created by 
-            a(href="#") Celafinde Agency
-        div(class="social-links text-center text-md-right")
-          a(href="#") 
-            i(class="bx bxl-twitter")
-          a(href="#") 
-            i(class="bx bxl-facebook")
-          a(href="#") 
-            i(class="bx bxl-instagram")
-          a(href="#") 
-            i(class="bx bxl-linkedin")
-
+    block footer
     script(src="/vendor/jquery/jquery.min.js") 
     script(src="/vendor/waypoints/jquery.waypoints.min.js") 
     script(src="/vendor/bootstrap/js/bootstrap.bundle.min.js")
     script(src="/vendor/popper/popper.min.js")  
     script(src="/vendor/aos/aos.js") 
+    script(src="/vendor/fontawesome/js/all.js") 
     script(src="/vendor/mdb/js/mdb.min.js") 
     script(src="/javascripts/app.js") 

@@ -1,0 +1,20 @@
+extends admin-layout 
+block content 
+    .container 
+        if errors 
+            each err in errors
+                div(class="alert alert-danger m-2") #{err}
+        h1=title
+        form(action="", method="post" enctype="multipart/form-data") 
+            .row   
+                .col-sm-4
+                    .form-group 
+                        label(for="name") Name: 
+                        input(type="text" name="name" value=image.name class="form-control")
+                    .form-group 
+                        label(for="name") Upload: 
+                        input(type="file" name="image_file" value=image.name class="form-control-file")
+                    .form-group    
+                        input(type="submit" value="Save Changes" class="btn btn-primary")
+                .col-sm-8.d-flex.justify-content-center.align-items-center
+                    img(src=`data:image/${image.img.contentType};base64,${image.img.data.toString('base64')}`, alt=image.name height=200)

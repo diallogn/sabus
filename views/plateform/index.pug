@@ -1,5 +1,26 @@
 extends ../layout 
+block header 
+    header(id="header2" class="navbar navbar-light" style="background: white;")
+      div(class="container")
+        a(href="/" class="navbar-brand d-flex align-items-center logo")
 
+          if logo
+            img(src=`data:image/${logo.img.contentType};base64,${logo.img.data.toString('base64')}`, alt="Logo" height="50" class="mr-2")
+          h3(class="m-0") Sabus
+
+        ul(class="navbar-nav flex-direction-row nav-menu d-none d-md-flex")
+          li(class="nav-item mr-4")
+            a(href="/users/register" class="nav-link") Electroménager
+          li(class="nav-item mr-4")
+            a(href="/users/register" class="nav-link") TV
+          li(class="nav-item mr-4")
+            a(href="/users/register" class="nav-link") Cuisine
+          li(class="nav-item mr-4 drop-down")
+            a(href="/users/register" class="nav-link") Categories 
+            ul.list-unstyled 
+              each category in categories 
+                li(class="")
+                  a(href="#" class="") #{category.name}
 block content 
     div(id="introCarousel" class="carousel slide carousel-fade" data-mdb-ride="carousel")
         ol(class="carousel-indicators")
@@ -8,23 +29,23 @@ block content
             li(data-mdb-target="#introCarousel" data-mdb-slide-to="2")
 
         div(class="carousel-inner")
-            div(class="carousel-item active")
-                div(class="mask" style="background-color: rgba(0, 0, 0, 0.1);")
-                    div(class="d-flex justify-content-center align-items-center h-100")
-                        div(class="text-white text-center")
-                            h1(class="mb-3") Learn Bootstrap 5 with MDB
-        
-            div(class="carousel-item")
-                div(class="mask" style="background-color: rgba(0, 0, 0, 0.6);")
-                    div(class="d-flex justify-content-center align-items-center h-100")
-                        div(class="text-white text-center")
-                            h1(class="mb-3") You can place here any content
-            
-            div(class="carousel-item")
+            div(class="carousel-item active" style=`background: url('data:image/${slide1.img.contentType};base64,${slide1.img.data.toString('base64')}');background-size: cover`)
                 div(class="mask" style="background: linear-gradient(45deg,rgba(29, 236, 197, 0.7),rgba(91, 14, 214, 0.7) 100%)")
                     div(class="d-flex justify-content-center align-items-center h-100")
                         div(class="text-white text-center")
-                            h1(class="mb-3") any content
+                          h1(class="mb-3") La qualité au meilleur prix
+        
+            div(class="carousel-item" style=`background: url('data:image/${slide2.img.contentType};base64,${slide2.img.data.toString('base64')}');background-size: cover`)
+                div(class="mask" style="background: linear-gradient(45deg,rgba(29, 236, 197, 0.7),rgba(91, 14, 214, 0.7) 100%)")
+                    div(class="d-flex justify-content-center align-items-center h-100")
+                        div(class="text-white text-center")
+                          h1(class="mb-3") La qualité au meilleur prix
+            
+            div(class="carousel-item" style=`background: url('data:image/${slide3.img.contentType};base64,${slide3.img.data.toString('base64')}');background-size: cover`)
+                div(class="mask" style="background: linear-gradient(45deg,rgba(29, 236, 197, 0.7),rgba(91, 14, 214, 0.7) 100%)")
+                    div(class="d-flex justify-content-center align-items-center h-100")
+                        div(class="text-white text-center")
+                            h1(class="mb-3") La qualité au meilleur prix
 
         a(class="carousel-control-prev" href="#introCarousel" role="button" data-mdb-slide="prev" ) 
             span(class="carousel-control-prev-icon" aria-hidden="true")
@@ -33,16 +54,45 @@ block content
         a(class="carousel-control-next" href="#introCarousel" role="button" data-mdb-slide="next" ) 
             span(class="carousel-control-next-icon" aria-hidden="true")
             span(class="sr-only") Next
-    .container
-        h5(class="mt-4")=title
-        div(id="products")
-            each product in products
-                div(class="card mt-4")
-                    .card-img
-                        img(src=`data:image/${product.image_file.img.contentType};base64,${product.image_file.img.data.toString('base64')}` , height="100px")
-                    .card-title
-                        h5(class="card-title") #{product.name}
-                        strong #{product.price} GNF
-                    a(href='/products/'+product.id+'/details' class="card-detail") Détails 
-
+    section.inverse  
+        .container
+            h4(class="section-title text-center text-uppercase") Découvrez nos nouveaux produits
+            div(id="products")
+                each product in products
+                    div(class="cart mt-4")
+                        .cart-img.d-flex.justify-content-center.align-items-center
+                            img(src=`data:image/${product.image_file.img.contentType};base64,${product.image_file.img.data.toString('base64')}` , height="100px")
+                        .cart-title.d-flex.justify-content-center.align-items-center
+                            a(href='/products/'+product.id+'/details') 
+                                h6 #{product.name} 
+    section
+        .container
+            h4(class="text-center text-uppercase section-title") A propos de nous
+            .row 
+                .col-sm-6.col-xs-12.text-justify
+                    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas aliquam nihil enim veniam mollitia ea similique voluptatum harum rem rerum, molestias deserunt debitis voluptatem sed. Magnam beatae quidem ad accusantium?
+                    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas aliquam nihil enim veniam mollitia ea similique voluptatum harum rem rerum, molestias deserunt debitis voluptatem sed. Magnam beatae quidem ad accusantium?
+                    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas aliquam nihil enim veniam mollitia ea similique voluptatum harum rem rerum, molestias deserunt debitis voluptatem sed. Magnam beatae quidem ad accusantium?
+                    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas aliquam nihil enim veniam mollitia ea similique voluptatum harum rem rerum, molestias deserunt debitis voluptatem sed. Magnam beatae quidem ad accusantium?
+                .col-sm-6.col-xs-12
+                  if about
+                    div(class="h-100" style=`background: url('data:image/${about.img.contentType};base64,${about.img.data.toString('base64')}') no-repeat;background-size: 100%`)
+block footer 
+    footer
+      div(class="container d-md-flex py-4")
+        div(class="text-center text-md-left mr-auto")
+          p
+            strong &copy; 2021 Sabu's Shop.
+            | Tous droit reservé
+          span Created by 
+            a(href="#") Celafinde Agency
+        div(class="social-links text-center text-md-right")
+          a(href="#") 
+            i(class="bx bxl-twitter")
+          a(href="#") 
+            i(class="bx bxl-facebook")
+          a(href="#") 
+            i(class="bx bxl-instagram")
+          a(href="#") 
+            i(class="bx bxl-linkedin")
             

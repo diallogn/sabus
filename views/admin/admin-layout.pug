@@ -12,6 +12,7 @@ html(dir="rtr" lang="fr")
     link(rel="stylesheet", href="/vendor/owl.carousel/assets/owl.carousel.min.css")
     link(rel="stylesheet", href="/vendor/owl.carousel/assets/owl.carousel.min.css")
     link(rel="stylesheet", href="/vendor/aos/aos.css")
+    link(rel="stylesheet", href="/vendor/font-awesome/css/all.css")
     link(rel="stylesheet", href="/vendor/coreui/css/coreui.min.css")
     link(rel="stylesheet", href="/stylesheets/admin.css")
   body.c-app
@@ -34,16 +35,23 @@ html(dir="rtr" lang="fr")
           a(href="/admin/users" class="c-sidebar-nav-link") 
             i(class="icofont icofont-users c-sidebar-nav-icon")
             | Users 
+        li.c-sidebar-nav-item 
+          a(href="/admin/images" class="c-sidebar-nav-link") 
+            i(class="icofont icofont-image c-sidebar-nav-icon")
+            | Images 
 
 
     div(class="c-wrapper" style="background:white")
       .c-header 
-        a(href="/admin/"+user.id+'/me' class="c-header-brand ml-auto mr-4")
-          i(class="icofont icofont-user mr-2")
-          if user
-            span=user.username
-          if !user
-            span anonymous 
+
+        if user
+          a(href="/admin/"+user.id+'/me' class="c-header-brand ml-auto mr-4")
+            i(class="icofont icofont-user mr-2")
+              span=user.username
+        if !user
+          div.ml-auto 
+            i(class="icofont icofont-user mr-2")
+            span(class="c-header-brand mr-4") anonymous 
         a(href="/admin/logout" class="c-header-nav mr-4") 
           i(class="icofont icofont-logout mr-2")
       .c-body 
@@ -55,5 +63,6 @@ html(dir="rtr" lang="fr")
     script(src="/vendor/popper/popper.min.js")  
     script(src="/vendor/aos/aos.js") 
     script(src="/vendor/bootstrap/js/bootstrap.bundle.min.js")
-    script(src="/vendor/coreui/js/coreui.min.js") 
+    script(src="/vendor/coreui/js/coreui.min.js")
+    script(src="/vendor/font-awesome/js/all.js")  
     script(src="/javascripts/admin.js") 

@@ -1,0 +1,18 @@
+extends admin-layout 
+block content 
+    .container
+        if errors 
+            each e in errors 
+                div.alert.alert-danger.m-2 #{e}
+        h1=title
+        form(action="", method="post" enctype="multipart/form-data")
+            .row 
+                .col-sm-6
+                    .form-group 
+                        label(for="name") Name: 
+                        input(type="text" name="name" id="name" class="form-control" value=(undefined === data ? '': data.name))
+                .col-sm-6
+                    .form-group 
+                        label(for="file") Image file:
+                        input(type="file" name="img_file" id="file" class="form-control-file" value=(undefined === data ? '': data.img_file))
+            input(type="submit" value="Upload Image" class="btn btn-primary")

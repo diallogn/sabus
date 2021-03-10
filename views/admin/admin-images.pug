@@ -1,0 +1,21 @@
+extends admin-layout 
+block content 
+    .container.d-flex.mb-2
+        h4=title
+        a(href="/admin/image/create" class="btn btn-primary ml-auto") Add image 
+    table.table.c-table
+        thead
+            tr(class="row text-center")
+                td(class="col-sm-4 d-flex align-items-center justify-content-center") Name
+                td(class="col-sm-4 d-flex align-items-center justify-content-center") Image
+                td(class="col-sm-4 d-flex align-items-center justify-content-center") Actions
+        tbody
+            each image in images 
+                tr(class="row text-center")
+                    
+                    td(class="col-sm-4 d-flex align-items-center justify-content-center") #{image.name}
+                    td(class="col-sm-4 d-flex align-items-center justify-content-center") 
+                        img(src=`data:image/${image.img.contentType};base64,${image.img.data.toString('base64')}`, alt=image.name height=30)
+                    td(class="col-sm-4 d-flex align-items-center justify-content-center") 
+                            a(href="/admin/image/" + image.id + "/edit" class="text-primary mr-2") Edit 
+                            a(href="/admin/image/" + image.id + "/delete" class="text-danger") Delete  

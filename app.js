@@ -66,8 +66,6 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.success_msg = req.app.get('env') === 'development' ? flash('success_msg') : {};
-  res.locals.error_msg = req.app.get('env') === 'development' ? flash('error_msg') : {};
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
