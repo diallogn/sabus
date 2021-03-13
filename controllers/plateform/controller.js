@@ -65,7 +65,7 @@ exports.prd_detail = function(req, res, next) {
         // Features
         for(var i in results.product.features) {
             features.push({key: i, value:results.product.features[i] })
-        }
+        } 
 
         // Thumbs
         results.thumbs.forEach( thumb => {

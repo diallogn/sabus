@@ -147,7 +147,7 @@ exports.product_create_post = [
             tags: req.body.prd_tags,
             description: [],
             features: {},
-        }
+        } 
 
         if(req.body.prd_status) {
             productDetail.status = true
