@@ -5,6 +5,7 @@ var admin_product_controller = require('../controllers/admin/adminProductControl
 var admin_category_controller = require('../controllers/admin/adminCategoryController');
 var admin_user_controller = require('../controllers/admin/adminUserController');
 var admin_image_controller = require('../controllers/admin/adminImagesController');
+var admin_command_controller = require('../controllers/admin/adminCommandController');
 
 // Product Controller
 router.get('/', admin_product_controller.index);
@@ -49,4 +50,7 @@ router.post('/image/:id/edit', admin_image_controller.image_edit_post)
 
 router.get('/image/:id/delete', admin_image_controller.image_delete_get)
 router.post('/image/:id/delete', admin_image_controller.image_delete_post)
+
+// Commandes
+router.get('/commands', admin_command_controller.command_list)
 module.exports = router;

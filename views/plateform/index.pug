@@ -10,17 +10,16 @@ block header
 
         ul(class="navbar-nav flex-direction-row nav-menu d-none d-md-flex")
           li(class="nav-item mr-4")
-            a(href="/users/register" class="nav-link") Electroménager
+            a(href="/" class="nav-link") Acceil
           li(class="nav-item mr-4")
-            a(href="/users/register" class="nav-link") TV
-          li(class="nav-item mr-4")
-            a(href="/users/register" class="nav-link") Cuisine
+            a(href="/catalogue" class="nav-link") Catalogue
           li(class="nav-item mr-4 drop-down")
             a(href="/users/register" class="nav-link") Categories 
             ul.list-unstyled 
               each category in categories 
                 li(class="")
-                  a(href="#" class="") #{category.name}
+                  a(href=`/catalogue/produits-par-categorie/${category.id}` class="") #{category.name}
+               
 block content 
     div(id="introCarousel" class="carousel slide carousel-fade" data-mdb-ride="carousel")
         ol(class="carousel-indicators")

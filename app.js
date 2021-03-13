@@ -11,6 +11,7 @@ var mongoose = require('mongoose');
 
 
 var indexRouter = require('./routes/index');
+var catalogRouter = require('./routes/catalog');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
 
@@ -52,6 +53,7 @@ app.use((req, res, next)=> {
 })
 
 app.use('/', indexRouter);
+app.use('/catalogue', catalogRouter);
 app.use('/admin', adminRouter);
 app.use('/users', usersRouter);
 

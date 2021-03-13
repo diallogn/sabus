@@ -60,7 +60,7 @@ exports.products = function (req, res, next) {
             .populate('image_file')
             .exec(function(err, data) {
                 if(err) {return next(err);}
-                res.render('admin/admin-index', {title: 'Products', products: data})
+                res.render('admin/admin-index', {title: 'Products', products: data.reverse()})
             });
         }else {
             res.redirect('/users/login')
@@ -225,11 +225,12 @@ exports.product_create_post = [
                         if(err){return next(err);}
                         productDetail.image_file = item
                         
+                        fs.unlinkSync(path.join(__dirname + '../../../public/images/uploads/' + req.file.filename))
                         // Save product on DB
                         let product = new Product(productDetail)
                         product.save(function(err, prd) {
                             if(err){ return next(err);}
-                            
+
                             // Redirect to product detail
                             res.redirect(prd.detail_url);
                         })
@@ -346,11 +347,8 @@ exports.product_delete_post = [
             })
         }else {
             // Success
-
-            console.log('Successful')
-            Product.findById(req.params.id).exec((err, found) => {
+            Product.findById(req.params.id).populate('image_file').exec((err, found) => {
                 if(err){ return next(err);}
-                
                 if(found.name !== req.body.name) {
                     req.flash('error', 'Le nom que vous avez entrez ne correspond pas.') 
                     res.render('admin/admin-delete-product', {title: "delete", product: found, errors: req.flash()})

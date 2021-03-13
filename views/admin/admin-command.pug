@@ -1,0 +1,26 @@
+extends admin-layout 
+block content 
+    .container-fluid
+        h4=title
+        .content-wrapper.mt-4
+            each command in commands 
+                #card 
+                    #main 
+                        #icon 
+                            img(src=`data:image/${command.product.image_file.img.contentType};base64,${command.product.image_file.img.data.toString('base64')}`, alt=""  width=50 )
+                        #content.ml-3
+                            h5 #{command.first_name} #{command.last_name}
+                            p
+                                span=command.phone
+                                br
+                                span=command.email
+                                br
+                                span=command.address
+                                br
+                                span Date : #{command.date_formatted}
+                                     
+                            p
+                                span Produit : #{command.product.name}
+                                br
+                                span Prix : #{command.product.price} GNF
+                                    

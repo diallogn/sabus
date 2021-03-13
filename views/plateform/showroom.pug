@@ -1,39 +1,77 @@
 extends ../layout 
+block header 
+    header(id="header2" class="navbar navbar-light" style="background: white;")
+      div(class="container")
+        a(href="/" class="navbar-brand d-flex align-items-center logo")
 
+          if logo
+            img(src=`data:image/${logo.img.contentType};base64,${logo.img.data.toString('base64')}`, alt="Logo" height="50" class="mr-2")
+          h3(class="m-0") Sabus
+
+        ul(class="navbar-nav flex-direction-row nav-menu d-none d-md-flex")
+          li(class="nav-item mr-4")
+            a(href="/" class="nav-link") Acceil
+          li(class="nav-item mr-4")
+            a(href="/catalogue" class="nav-link") Catalogue
+          li(class="nav-item mr-4 drop-down")
+            a(href="/users/register" class="nav-link") Categories 
+            ul.list-unstyled 
+              each category in categories 
+                li(class="")
+                  a(href=`/catalogue/produits-par-categorie/${category.id}` class="") #{category.name}
+                  
 block content 
-    div(class="banner-small d-flex align-items-center")
-        .container
-            .row 
-                div(class="col-sm-6")
-                    h5 
-                        span.sabus Sabu's Shop 
-                    p Le magasin d'électronique le plus proche de vous. 
-    div(class="container mt-4 showroom")
-        .row
-            .col-sm-3
-            
-                h5
-                    strong Contactez-nous 
-                p 
-                    strong Addresse : 
-                    br
-                    | Zaitair, Derrière le terrain de basket
-                    br
-                    | Mamou Centre, Guinée.
-                p 
-                    strong Téléphone : 
-                    | +224 622 21 45 42
-                p 
-                    strong Email : 
-                    | sabus@contact.com
-                h5 
-                    strong Produit
-                p 
-                    strong Nome: 
-                    | #{product.name}
-                p 
-                    strong Category : 
-                    | #{product.category.name}
-                p 
-                    strong Model : 
-                    | #{product.features.model}
+    .container.mt-4.mb-4
+      if errors 
+        .mt-4.mb-4
+          each error in errors 
+            .alert.alert-danger.mt-2.mb-2 #{error.msg}
+      h4.text-center.text-uppercase Commander le produit
+      div(class="container mt-4 showroom")
+          form(action="", method="post") 
+              .row 
+                  .col-sm-6
+                      .form-group 
+                          label(for="name") Nom: 
+                          input(type="text" name="firstName" class="form-control" placeholder="Diallo" value=(undefind === command ? '' : command.first_name) ) 
+                      .form-group 
+                          label(for="name") Prenom: 
+                          input(type="text" name="lastName" class="form-control" placeholder="Abdoulaye" value=(undefind === command ? '' : command.last_name) ) 
+                      .form-group 
+                          label(for="name") Téléphone: 
+                          input(type="tel" name="phone" class="form-control" placeholder="+ 224 655 555 555" value=(undefind === command ? '' : command.phone) ) 
+                      .form-group 
+                          label(for="name") Email: 
+                          input(type="email" name="email" class="form-control" placeholder="contact@sabus.com" value=(undefind === command ? '' : command.email) ) 
+                          input(type="text" name="product_id" class="form-control d-none" value=product.id) 
+                      .form-group 
+                          label(for="address") Addresse: 
+                          textarea(name="address", class="form-control" ) 
+                  .col-sm-6.text-center 
+                      img(src=`data:image/${product.image_file.img.contentType};base64,${product.image_file.img.data.toString('base64')}`, class="mt-4" alt="" height=180)
+                      h6.mt-4=product.name
+                      span.d-block.mb-2 Catégorie :  #{product.category.name}
+                      if product.features
+                          span.d-block.mb-2  Modèle :  #{product.features.model}
+
+                      span.d-block.mb-2 
+                          strong Prix : #{product.price} GNF
+              input(type="submit" value="Commandez" class="btn btn-primary")
+block footer 
+    footer
+      div(class="container d-md-flex py-4")
+        div(class="text-center text-md-left mr-auto")
+          p
+            strong &copy; 2021 Sabu's Shop.
+            | Tous droit reservé
+          span Created by 
+            a(href="#") Celafinde Agency
+        div(class="social-links text-center text-md-right")
+          a(href="#") 
+            i(class="bx bxl-twitter")
+          a(href="#") 
+            i(class="bx bxl-facebook")
+          a(href="#") 
+            i(class="bx bxl-instagram")
+          a(href="#") 
+            i(class="bx bxl-linkedin")

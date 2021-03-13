@@ -10,17 +10,16 @@ block header
 
         ul(class="navbar-nav flex-direction-row nav-menu d-none d-md-flex")
           li(class="nav-item mr-4")
-            a(href="/users/register" class="nav-link") Electroménager
+            a(href="/" class="nav-link") Acceil
           li(class="nav-item mr-4")
-            a(href="/users/register" class="nav-link") TV
-          li(class="nav-item mr-4")
-            a(href="/users/register" class="nav-link") Cuisine
+            a(href="/catalogue" class="nav-link") Catalogue
           li(class="nav-item mr-4 drop-down")
             a(href="/users/register" class="nav-link") Categories 
             ul.list-unstyled 
               each category in categories 
                 li(class="")
-                  a(href="#" class="") #{category.name}
+                  a(href=`/catalogue/produits-par-categorie/${category.id}` class="") #{category.name}
+                  
 block content  
     
     .container 
@@ -28,7 +27,7 @@ block content
             div(class="col-md-6 d-flex justify-content-center mt-4 mb-4")
                 img(src=`data:image/${product.image_file.img.contentType};base64,${product.image_file.img.data.toString('base64')}`, alt=product.image_file.name height="300px")
             div(class="col-md-6 info-block text-xs-center mt-4")
-                h4=product.name
+                h2=product.name
                 span.d-block.mb-2 Catégorie :  #{product.category.name}
                 if product.features
                     span.d-block.mb-2  Modèle :  #{product.features.model}
@@ -40,7 +39,7 @@ block content
                         each desk in product.description 
                             span=desk
                             | . 
-                a(href='/products/'+product.id+'/showroom' class="btn btn-primary") Où acheter
+                a(href='/products/'+product.id+'/showroom' class="btn btn-primary") Commandez
         if (features.length != 0) 
             table(class="table table-striped" width="100%" )
                 thead(width="100%")

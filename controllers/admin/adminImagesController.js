@@ -8,7 +8,7 @@ var Cloud = require('../../models/cloud');
 // Enregistrer dans le server
 var diskStorage = multer.diskStorage({
     destination: function(req, file, cb) {
-      cb(null, './public/images/forsite/')
+      cb(null, './public/images/clouds/')
     },  
     filename: function (req, file, cb) {
       cb(null, "SABUS_" + Date.now() + path.extname(file.originalname))
@@ -73,7 +73,7 @@ exports.image_create_post = [
             name:  data.name,
             length: req.file.length,        
             img:{
-                data: fs.readFileSync(path.join(__dirname + '/../../public/images/forsite/' + req.file.filename)),
+                data: fs.readFileSync(path.join(__dirname + '/../../public/images/clouds/' + req.file.filename)),
                 contentType: req.file.contentType
             }
         }
@@ -96,9 +96,10 @@ exports.image_create_post = [
                         let cloud = new Cloud(obj)
                         cloud.save((err, item)=> {
                             if(err){return next(err);}
-                            console.log(item)
+                            fs.unlinkSync(path.join(__dirname + '/../../public/images/clouds/' + req.file.filename))
                         });
                     }
+                    
                     res.redirect('/admin/images')
                 })
             }else {
@@ -136,7 +137,7 @@ exports.image_edit_post = [
         if(req.file) {
             obj.length = req.file.length,        
             obj.img = {
-                data: fs.readFileSync(path.join(__dirname + '/../../public/images/forsite/' + req.file.filename)),
+                data: fs.readFileSync(path.join(__dirname + '/../../public/images/clouds/' + req.file.filename)),
                 contentType: req.file.contentType
             }
         }
