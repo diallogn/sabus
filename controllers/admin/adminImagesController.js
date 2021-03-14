@@ -97,7 +97,6 @@ exports.image_create_post = [
                         cloud.save((err, item)=> {
                             if(err){return next(err);}
                         });
-                        fs.unlinkSync(path.join(__dirname + '/../../public/images/clouds/' + req.file.filename))
                     }
                     
                     res.redirect('/admin/images')
