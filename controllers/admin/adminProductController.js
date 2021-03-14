@@ -225,15 +225,15 @@ exports.product_create_post = [
                         if(err){return next(err);}
                         productDetail.image_file = item
                         
-                        fs.unlinkSync(path.join(__dirname + '../../../public/images/uploads/' + req.file.filename))
                         // Save product on DB
                         let product = new Product(productDetail)
                         product.save(function(err, prd) {
                             if(err){ return next(err);}
-
+                            
                             // Redirect to product detail
                             res.redirect(prd.detail_url);
                         })
+                        fs.unlinkSync(path.join(__dirname + '../../../public/images/uploads/' + req.file.filename))
     
                     })  
                 })
