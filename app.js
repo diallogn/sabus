@@ -19,7 +19,7 @@ var app = express();
 // Database
 var cluster = 'mongodb+srv://celafinde:69305565@cluster0.wmifd.mongodb.net/sabus-app'
 var mongoDB = "mongodb://localhost/sabus-app";
-mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(cluster, {useNewUrlParser: true, useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error: '));
 
